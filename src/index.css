@@ -1,0 +1,401 @@
+/* ==========================================================================
+   Pip's Little Dream Desktop - Global Styles & Design System Foundation
+   ========================================================================== */
+
+:root {
+  /* Pastel Sky-Blue Palette */
+  --color-sky-light: #eaf4fe;
+  --color-sky-soft: #cce7fc;
+  --color-sky: #9ecbfa;
+  --color-sky-deep: #6ca7f3;
+  --color-sky-border: #7aa7df;
+  
+  /* Cream / Cloud Whites */
+  --color-cream-pure: #ffffff;
+  --color-cream: #fffdfa;
+  --color-cream-soft: #f8fbff;
+  --color-cream-parchment: #fcf9f2;
+  --color-window-bg: rgba(255, 255, 255, 0.94);
+
+  /* Warm Pink Palette */
+  --color-pink-primary: #ff7e9e;
+  --color-pink-hover: #f1688b;
+  --color-pink-deep: #db4b71;
+  --color-pink-soft: #ffe8ef;
+  --color-pink-border: #f897b0;
+
+  /* Deep Navy Palette */
+  --color-navy-dark: #192b52;
+  --color-navy: #243e74;
+  --color-navy-muted: #586f9a;
+  --color-navy-border: #3b5fa2;
+  --color-navy-light: #7c95c4;
+
+  /* Golden-Yellow Star Palette */
+  --color-yellow-star: #ffc837;
+  --color-yellow-warm: #ffdd67;
+  --color-yellow-soft: #fff6d8;
+  --color-yellow-border: #ebb021;
+
+  /* Typography */
+  --font-pixel: 'Pixelify Sans', -apple-system, BlinkMacSystemFont, monospace, sans-serif;
+  --font-heading: 'Fredoka', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-body: 'Quicksand', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  /* Spacing Scale */
+  --space-2xs: 0.25rem;  /* 4px */
+  --space-xs: 0.5rem;    /* 8px */
+  --space-sm: 0.75rem;   /* 12px */
+  --space-md: 1rem;      /* 16px */
+  --space-lg: 1.5rem;    /* 24px */
+  --space-xl: 2rem;      /* 32px */
+  --space-2xl: 3rem;     /* 48px */
+  --space-3xl: 4.5rem;   /* 72px */
+
+  /* Layout & Widths */
+  --max-content-width: 1260px;
+  --nav-height: 76px;
+
+  /* Borders & Radius */
+  --radius-xs: 6px;
+  --radius-sm: 12px;
+  --radius-md: 18px;
+  --radius-lg: 20px;
+  --radius-pill: 9999px;
+  --border-window: 2px solid #5a8fd9;
+  --border-subtle: 1.5px solid var(--color-sky-border);
+
+  /* Shadows */
+  --shadow-window: 0 10px 30px rgba(36, 62, 116, 0.12), 0 2px 6px rgba(36, 62, 116, 0.06);
+  --shadow-nav: 0 8px 24px rgba(27, 46, 86, 0.14);
+  --shadow-button-pink: 0 4px 0 var(--color-pink-deep);
+  --shadow-button-white: 0 4px 0 #b3cdf2;
+  --shadow-button-yellow: 0 4px 0 var(--color-yellow-border);
+}
+
+/* ==========================================================================
+   Night Mode Foundation (Clean CSS Variable Inversion)
+   Preserves layout, typography, proportions, and dimensions 100%
+   ========================================================================== */
+.theme-night {
+  --color-sky-light: #18284d;
+  --color-sky-soft: #233a6e;
+  --color-sky: #3b5ca3;
+  --color-sky-deep: #203566;
+  --color-sky-border: #4d72bc;
+
+  --color-window-bg: rgba(23, 37, 72, 0.94);
+  --color-cream-pure: #1e305c;
+  --color-cream: #1a2a52;
+  --color-cream-soft: #192950;
+  --color-cream-parchment: #223565;
+
+  --color-navy-dark: #f0f6ff;
+  --color-navy: #d8e7ff;
+  --color-navy-muted: #a3c2f4;
+  --color-navy-border: #5a85d4;
+  --color-navy-light: #b4d1ff;
+
+  --border-window: 2px solid #5a8fd9;
+  --shadow-window: 0 10px 30px rgba(0, 0, 0, 0.4), 0 0 20px rgba(77, 114, 188, 0.25);
+  --shadow-nav: 0 8px 24px rgba(0, 0, 0, 0.45);
+}
+
+body.theme-night {
+  background-color: #0d1527;
+  color: var(--color-navy);
+}
+
+body.theme-night .hero-section {
+  background-color: #121e38;
+}
+
+body.theme-night .hero-scene-artwork {
+  filter: brightness(0.92) contrast(1.05) hue-rotate(5deg);
+}
+
+/* ==========================================================================
+   Chaos Mode - Playful, Dreamlike Whimsical Animations
+   Completely reversible, zero layout destruction, zero overflow
+   ========================================================================== */
+.chaos-mode-active {
+  overflow-x: hidden !important;
+}
+
+.chaos-mode-active .project-card {
+  animation: chaos-card-float 3s ease-in-out infinite alternate;
+}
+
+.chaos-mode-active .project-card:nth-child(even) {
+  animation-delay: 0.5s;
+  animation-duration: 3.5s;
+}
+
+.chaos-mode-active .story-window,
+.chaos-mode-active .about-window,
+.chaos-mode-active .guestbook-window {
+  animation: chaos-window-sway 6s ease-in-out infinite alternate;
+}
+
+.chaos-mode-active .polaroid-wrapper {
+  animation: chaos-polaroid-wiggle 2.5s ease-in-out infinite alternate;
+}
+
+@keyframes chaos-card-float {
+  0% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-8px) rotate(1.2deg); }
+  100% { transform: translateY(6px) rotate(-1.2deg); }
+}
+
+@keyframes chaos-window-sway {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.004) translateY(-3px); }
+}
+
+@keyframes chaos-polaroid-wiggle {
+  0% { transform: rotate(-2deg) scale(1); }
+  50% { transform: rotate(2deg) scale(1.02); }
+  100% { transform: rotate(-1.5deg) scale(0.99); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .chaos-mode-active .project-card,
+  .chaos-mode-active .story-window,
+  .chaos-mode-active .about-window,
+  .chaos-mode-active .guestbook-window,
+  .chaos-mode-active .polaroid-wrapper {
+    animation: none !important;
+    transform: none !important;
+  }
+}
+
+/* Base Resets */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--nav-height) + 24px);
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-body);
+  font-weight: 500;
+  color: var(--color-navy);
+  background-color: #8cc2fb;
+  background-image: url('../assets/pip-dream-world-background.png');
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: cover;
+  image-rendering: pixelated;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  image-rendering: -moz-crisp-edges;
+  min-height: 100vh;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  color: var(--color-navy-dark);
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+/* Page Layout */
+.site-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.main-content {
+  flex: 1;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3xl);
+}
+
+/* Reusable Section Window Container */
+.dream-section {
+  width: 100%;
+  max-width: var(--max-content-width);
+  margin: 0 auto;
+  padding: 0 var(--space-md);
+  scroll-margin-top: calc(var(--nav-height) + 24px);
+}
+
+.dream-window {
+  background: var(--color-window-bg);
+  border: var(--border-window);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-window);
+  padding: var(--space-xl);
+  position: relative;
+}
+
+.dream-window-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 2px dashed var(--color-sky-soft);
+  padding-bottom: var(--space-md);
+  margin-bottom: var(--space-lg);
+}
+
+.dream-window-title {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  font-size: 1.5rem;
+  color: var(--color-navy-dark);
+}
+
+.dream-window-tagline {
+  font-size: 0.95rem;
+  color: var(--color-navy-muted);
+  font-weight: 500;
+}
+
+.dream-window-body {
+  min-height: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: var(--space-2xl) var(--space-md);
+  border-radius: var(--radius-md);
+  background: var(--color-cream-soft);
+  border: 1.5px dashed var(--color-sky-border);
+}
+
+/* Reusable Button Styles */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xs);
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  padding: 0.65rem 1.4rem;
+  border-radius: var(--radius-pill);
+  transition: transform 0.12s ease, box-shadow 0.12s ease, background-color 0.15s ease;
+  user-select: none;
+  line-height: 1.2;
+}
+
+.btn:active {
+  transform: translateY(3px);
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Pink Primary Button */
+.btn-primary {
+  background-color: var(--color-pink-primary);
+  color: #ffffff;
+  border: 2px solid var(--color-navy-dark);
+  box-shadow: var(--shadow-button-pink);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-pink-hover);
+}
+
+/* White / Cream Secondary Button */
+.btn-secondary {
+  background-color: var(--color-cream-pure);
+  color: var(--color-navy-dark);
+  border: 2px solid var(--color-navy-dark);
+  box-shadow: var(--shadow-button-white);
+}
+
+.btn-secondary:hover {
+  background-color: #f0f7ff;
+}
+
+/* Golden Yellow Accent Button */
+.btn-accent {
+  background-color: var(--color-yellow-star);
+  color: var(--color-navy-dark);
+  border: 2px solid var(--color-navy-dark);
+  box-shadow: var(--shadow-button-yellow);
+}
+
+.btn-accent:hover {
+  background-color: var(--color-yellow-warm);
+}
+
+/* Small Utility Buttons */
+.btn-sm {
+  padding: 0.4rem 0.9rem;
+  font-size: 0.875rem;
+}
+
+.btn-icon {
+  padding: 0.5rem;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-pill);
+  border: 2px solid var(--color-navy-border);
+  background: var(--color-cream-pure);
+  box-shadow: 0 3px 0 #b3cdf2;
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 992px) {
+  :root {
+    --space-3xl: 3rem;
+    --space-2xl: 2rem;
+  }
+  
+  .main-content {
+    padding: var(--space-md) var(--space-sm) var(--space-2xl);
+    gap: var(--space-2xl);
+  }
+}
+
+@media (max-width: 640px) {
+  :root {
+    --nav-height: 64px;
+    --space-xl: 1.25rem;
+  }
+  
+  .dream-window {
+    padding: var(--space-md);
+    border-radius: var(--radius-md);
+  }
+  
+  .dream-window-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-2xs);
+  }
+  
+  .dream-window-title {
+    font-size: 1.25rem;
+  }
+  
+  .dream-window-body {
+    min-height: 220px;
+    padding: var(--space-lg) var(--space-xs);
+  }
+}
+
+
+

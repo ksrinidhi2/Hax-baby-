@@ -1,0 +1,513 @@
+/* ==========================================================================
+   About Section Styles - Exact Match to Reference (Pip's Dreamy About Page)
+   ========================================================================== */
+
+.about-section {
+  width: 100%;
+  min-height: auto;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: calc(var(--nav-height) + 20px);
+  padding-bottom: 2rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  max-width: 1312px;
+  margin: 0 auto;
+  position: relative;
+  scroll-margin-top: 0;
+}
+
+/* 1. Main Dream Window */
+.about-window {
+  width: 100%;
+  background: #ffffff;
+  border: 2px solid #5a8fd9;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(36, 62, 116, 0.12), 0 2px 6px rgba(36, 62, 116, 0.06);
+  padding: 1.35rem 1.75rem 1.5rem;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 1.05rem;
+}
+
+/* Window Header Bar */
+.about-window-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 0.7rem;
+  border-bottom: 2px dashed #cae0fa;
+}
+
+.about-header-left {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.about-header-icon {
+  font-size: 1.4rem;
+}
+
+.about-header-title {
+  font-family: var(--font-heading);
+  font-size: 1.55rem;
+  color: #173b7d;
+  font-weight: 700;
+  margin: 0;
+}
+
+.about-header-star {
+  font-size: 1.1rem;
+}
+
+.about-header-right {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: #4477b5;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.about-header-star-small {
+  font-size: 0.85rem;
+}
+
+.about-header-moon {
+  font-size: 1rem;
+}
+
+/* 3-Column Content Layout */
+.about-content-grid {
+  display: grid;
+  grid-template-columns: 290px 1fr 390px;
+  gap: 1.2rem;
+  align-items: stretch;
+}
+
+/* Column 1: Left Polaroid Frame */
+.about-col-portrait {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.polaroid-wrapper {
+  width: 100%;
+  max-width: 290px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.polaroid-frame-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+  filter: drop-shadow(0 6px 14px rgba(36, 62, 116, 0.1));
+}
+
+/* Column 2: Center Content */
+.about-col-center {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  justify-content: space-between;
+}
+
+.meet-pip-heading {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.cloud-symbol {
+  font-size: 1.3rem;
+}
+
+.meet-pip-title {
+  font-family: var(--font-pixel);
+  font-size: 1.95rem;
+  color: #173b7d;
+  font-weight: 700;
+  line-height: 1.1;
+  margin: 0;
+}
+
+.star-symbol {
+  font-size: 1.1rem;
+}
+
+.meet-pip-role {
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  color: #4a84d4;
+  font-weight: 600;
+  margin-top: -0.25rem;
+  margin-bottom: 0;
+}
+
+.pip-speech-row {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+  position: relative;
+}
+
+.pip-bio-text {
+  flex: 1;
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  line-height: 1.45;
+  color: #3b5074;
+  font-weight: 500;
+  margin: 0;
+}
+
+.pip-speech-bubble-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 135px;
+  flex-shrink: 0;
+}
+
+.pip-speech-bubble {
+  background: #ffffff;
+  border: 2px solid #3b68c4;
+  border-radius: 14px;
+  padding: 6px 10px;
+  font-family: var(--font-pixel);
+  font-size: 0.82rem;
+  color: #173b7d;
+  font-weight: 700;
+  text-align: center;
+  line-height: 1.25;
+  position: relative;
+  box-shadow: 0 3px 8px rgba(36, 62, 116, 0.08);
+}
+
+.pip-speech-bubble::after {
+  content: '';
+  position: absolute;
+  bottom: -7px;
+  left: 24px;
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 7px solid #3b68c4;
+}
+
+.pip-speech-bubble::before {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 25px;
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid #ffffff;
+  z-index: 1;
+}
+
+.pip-crawling-img {
+  width: 82px;
+  height: auto;
+  margin-top: 4px;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+/* Personality Tags Row */
+.personality-tags-row {
+  display: flex;
+  gap: 0.45rem;
+  flex-wrap: wrap;
+  margin: 0.1rem 0;
+}
+
+.personality-tag {
+  font-family: var(--font-heading);
+  font-size: 0.82rem;
+  font-weight: 600;
+  padding: 0.32rem 0.7rem;
+  border-radius: 9999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  white-space: nowrap;
+}
+
+.tag-curious {
+  background: #ffffff;
+  border: 1.5px solid #5587d6;
+  color: #173b7d;
+}
+
+.tag-kind {
+  background: #fff0f4;
+  border: 1.5px solid #ff8aa5;
+  color: #c72957;
+}
+
+.tag-creative {
+  background: #fff9e6;
+  border: 1.5px solid #f2be38;
+  color: #946908;
+}
+
+.tag-dreaming {
+  background: #f0f3ff;
+  border: 1.5px solid #829bf0;
+  color: #2e4a9e;
+}
+
+/* Pip's Favourite Things Sub-panel */
+.fav-things-container {
+  background: #f1f7ff;
+  border: 1.5px solid #b8d7fb;
+  border-radius: 14px;
+  padding: 0.55rem 0.75rem 0.65rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.fav-things-header {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: var(--font-heading);
+  font-size: 0.92rem;
+  color: #173b7d;
+  font-weight: 700;
+}
+
+.fav-star {
+  font-size: 0.95rem;
+}
+
+.fav-things-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.55rem;
+}
+
+.fav-card {
+  background: #ffffff;
+  border: 1.5px solid #c9e0fd;
+  border-radius: 10px;
+  padding: 0.45rem 0.35rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.fav-icon-wrapper {
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.2rem;
+}
+
+.fav-icon-wrapper img {
+  max-height: 38px;
+  max-width: 100%;
+  object-fit: contain;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+.fav-card-title {
+  font-family: var(--font-heading);
+  font-size: 0.8rem;
+  color: #133979;
+  font-weight: 700;
+  line-height: 1.15;
+  margin: 0 0 0.12rem;
+}
+
+.fav-card-desc {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  color: #5575a7;
+  line-height: 1.2;
+  font-weight: 500;
+  margin: 0;
+}
+
+/* Column 3: Right Profile Retro Window */
+.about-col-profile {
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-retro-window {
+  background: #fdfefe;
+  border: 2px solid #5a8fd9;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 4px 14px rgba(36, 62, 116, 0.08);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.profile-window-header {
+  background: #eef5fe;
+  border-bottom: 1.5px solid #bcd8fb;
+  padding: 0.45rem 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.profile-header-left {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.profile-cloud-icon {
+  font-size: 0.95rem;
+}
+
+.profile-window-title {
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  color: #173b7d;
+  font-weight: 700;
+}
+
+.profile-window-controls {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.win-btn {
+  width: 19px;
+  height: 19px;
+  border-radius: 4px;
+  border: 1.5px solid #5a8fd9;
+  background: #ffffff;
+  color: #173b7d;
+  font-size: 0.65rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  cursor: default;
+}
+
+.profile-list {
+  padding: 0.6rem 0.85rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  margin: 0;
+  flex: 1;
+  justify-content: space-between;
+}
+
+.profile-row {
+  display: grid;
+  grid-template-columns: 115px 1fr;
+  gap: 0.5rem;
+  align-items: baseline;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px dashed #e1edfc;
+}
+
+.profile-row:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.profile-label {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #173b7d;
+}
+
+.profile-icon {
+  font-size: 0.95rem;
+  flex-shrink: 0;
+}
+
+.profile-val {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  color: #3b5074;
+  line-height: 1.35;
+  font-weight: 500;
+}
+
+.profile-tagline-val {
+  font-style: italic;
+  color: #e6396e;
+  font-weight: 600;
+  font-size: 0.86rem;
+}
+
+/* Inspirational Quote */
+.about-inspirational-quote {
+  margin-top: 0.35rem;
+  padding-top: 0.75rem;
+  border-top: 1px dashed #cae0fa;
+  text-align: center;
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #243e74;
+  letter-spacing: 0.01em;
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 1100px) {
+  .about-content-grid {
+    grid-template-columns: 1fr;
+  }
+  .about-col-portrait {
+    order: 1;
+  }
+  .about-col-center {
+    order: 2;
+  }
+  .about-col-profile {
+    order: 3;
+  }
+  .about-section {
+    min-height: auto;
+    padding-top: calc(var(--nav-height) + 20px);
+  }
+}
+
+.bow-wiggle {
+  animation: about-bow-wiggle 0.6s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
+
+@keyframes about-bow-wiggle {
+  10%, 90% { transform: translate3d(-1px, -2px, 0) rotate(-2deg); }
+  20%, 80% { transform: translate3d(2px, 1px, 0) rotate(2.5deg); }
+  30%, 50%, 70% { transform: translate3d(-2px, -3px, 0) rotate(-2deg); }
+  40%, 60% { transform: translate3d(2px, 1px, 0) rotate(3deg); }
+}

@@ -1,0 +1,583 @@
+/* ==========================================================================
+   Guestbook Section Styles - Exact Match to Dream Guestbook Reference
+   ========================================================================== */
+
+.guestbook-section {
+  width: 100%;
+  min-height: auto;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: calc(var(--nav-height) + 20px);
+  padding-bottom: 2rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  max-width: 1312px;
+  margin: 0 auto;
+  position: relative;
+  scroll-margin-top: 0;
+}
+
+/* 1. Main Guestbook Window */
+.guestbook-window {
+  width: 100%;
+  background: #ffffff;
+  border: 2px solid #5a8fd9;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(36, 62, 116, 0.12), 0 2px 6px rgba(36, 62, 116, 0.06);
+  padding: 1.35rem 1.75rem 1.5rem;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+}
+
+/* 2. Window Header Bar */
+.guestbook-window-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 0.85rem;
+  border-bottom: 2px dashed #cae0fa;
+  gap: 1.5rem;
+}
+
+.guestbook-header-left {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  flex: 1;
+  max-width: 780px;
+}
+
+.guestbook-title-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.guestbook-envelope-icon {
+  font-size: 1.6rem;
+  line-height: 1;
+}
+
+.guestbook-title {
+  font-family: var(--font-heading);
+  font-size: 1.7rem;
+  color: #173b7d;
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.guestbook-star-icon {
+  font-size: 1.35rem;
+  color: #ffb703;
+  line-height: 1;
+}
+
+.guestbook-subtitle {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: #4b6694;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.guestbook-header-right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-shrink: 0;
+}
+
+.guestbook-header-pip-img {
+  max-height: 86px;
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 10px rgba(36, 62, 116, 0.1));
+}
+
+/* 3. Main Two-Column Layout */
+.guestbook-main-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.3rem;
+  align-items: stretch;
+}
+
+/* Common Card Box */
+.guestbook-card {
+  background: #fbfdff;
+  border: 1.5px solid #d4e5fc;
+  border-radius: 16px;
+  padding: 1.1rem 1.25rem;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.card-title-row {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1.5px solid #e1eefc;
+}
+
+.card-pencil-icon,
+.card-chart-icon,
+.card-mail-icon {
+  font-size: 1.15rem;
+}
+
+.card-heading {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #1a3668;
+  margin: 0;
+  flex: 1;
+}
+
+.card-star-icon {
+  font-size: 1rem;
+  color: #ffb703;
+}
+
+/* ==========================================================================
+   Left Form: Leave a Dream Wish
+   ========================================================================== */
+.guestbook-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.form-label {
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #1a3668;
+}
+
+.form-input {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  padding: 0.6rem 0.85rem;
+  border-radius: 10px;
+  border: 1.5px solid #c9e0fd;
+  background: #ffffff;
+  color: #243e74;
+  outline: none;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+}
+
+.form-input:focus {
+  border-color: #5a8fd9;
+  box-shadow: 0 0 0 3px rgba(90, 143, 217, 0.15);
+}
+
+.form-input::placeholder {
+  color: #8da4c4;
+}
+
+/* 6 Selectable Icon Badges */
+.icon-badges-row {
+  display: flex;
+  gap: 0.55rem;
+  flex-wrap: wrap;
+}
+
+.badge-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: #ffffff;
+  border: 1.5px solid #d4e5fc;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s ease;
+  padding: 0;
+}
+
+.badge-symbol {
+  font-size: 1.25rem;
+  line-height: 1;
+}
+
+.badge-btn:hover {
+  border-color: #ff8aa5;
+  background: #fff5f8;
+  transform: translateY(-1px);
+}
+
+.badge-btn.is-selected {
+  border-color: #ff8aa5;
+  background: #ffe3ea;
+  box-shadow: 0 2px 8px rgba(255, 138, 165, 0.35);
+  transform: scale(1.04);
+}
+
+/* Textarea & live counter */
+.form-textarea {
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  padding: 0.65rem 0.85rem;
+  border-radius: 10px;
+  border: 1.5px solid #c9e0fd;
+  background: #ffffff;
+  color: #243e74;
+  resize: vertical;
+  outline: none;
+  transition: all 0.2s ease;
+  min-height: 80px;
+  line-height: 1.45;
+  box-sizing: border-box;
+}
+
+.form-textarea:focus {
+  border-color: #5a8fd9;
+  box-shadow: 0 0 0 3px rgba(90, 143, 217, 0.15);
+}
+
+.form-textarea::placeholder {
+  color: #8da4c4;
+}
+
+.char-counter-row {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.char-counter {
+  font-family: var(--font-heading);
+  font-size: 0.75rem;
+  color: #6480a8;
+  font-weight: 600;
+}
+
+/* Status message */
+.status-message {
+  padding: 0.55rem 0.85rem;
+  border-radius: 8px;
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.status-error {
+  background: #fff0f3;
+  color: #c92a2a;
+  border: 1px solid #ffc9c9;
+}
+
+.status-success {
+  background: #e8f7ec;
+  color: #2b8a3e;
+  border: 1px solid #b2f2bb;
+}
+
+/* Submit button (Pink matching reference) */
+.form-submit-row {
+  margin-top: 0.2rem;
+}
+
+.guestbook-submit-btn {
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 700;
+  padding: 0.65rem 1.4rem;
+  border-radius: 999px;
+  cursor: pointer;
+  background: #ff8aa5;
+  color: #ffffff;
+  border: 2px solid #243e74;
+  box-shadow: 0 4px 0 #cf496d;
+  transition: all 0.15s ease;
+}
+
+.guestbook-submit-btn:hover:not(:disabled) {
+  background: #ff7695;
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 #cf496d;
+}
+
+.guestbook-submit-btn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+/* ==========================================================================
+   Right Column: Dream Visitors & Your Wish is Special
+   ========================================================================== */
+.guestbook-right-column {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.visitors-subtitle {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: #173b7d;
+  text-align: center;
+  margin: 0;
+  font-weight: 500;
+}
+
+/* Odometer Artwork Frame */
+.odometer-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: -0.2rem;
+}
+
+.odometer-artwork-wrapper {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  max-width: 440px;
+}
+
+.odometer-bg-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Digits overlay perfectly over the frame's 4 card slots */
+.odometer-digits-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.odometer-digit-slot {
+  position: absolute;
+  top: 51.5%;
+  transform: translate(-50%, -50%);
+  width: 8.8%;
+  height: 35%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.odometer-slot-0 { left: 34.6%; }
+.odometer-slot-1 { left: 44.0%; }
+.odometer-slot-2 { left: 53.5%; }
+.odometer-slot-3 { left: 63.0%; }
+
+.odometer-digit-text {
+  font-family: var(--font-heading);
+  font-size: clamp(1.1rem, 2.8vw, 1.65rem);
+  font-weight: 700;
+  color: #e6396e;
+  line-height: 1;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.8);
+  user-select: none;
+}
+
+/* Your Wish is Special Card */
+.guestbook-special-card {
+  background: #fff8fb;
+  border: 1.5px solid #ffd8e5;
+  box-shadow: 0 4px 14px rgba(255, 142, 172, 0.1);
+}
+
+.special-card-body {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 1rem;
+  align-items: center;
+}
+
+.special-pip-media {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.special-pip-img {
+  width: 100%;
+  max-width: 135px;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  border-radius: 10px;
+}
+
+.special-pip-text-col {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.special-callout-title {
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #173b7d;
+  margin: 0;
+}
+
+.special-callout-desc {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: #3b5074;
+  line-height: 1.45;
+  margin: 0;
+}
+
+/* ==========================================================================
+   Submitted Wishes Cards List
+   ========================================================================== */
+.submitted-wishes-section {
+  margin-top: 0.5rem;
+  padding-top: 1rem;
+  border-top: 1.5px dashed #dae7f8;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.submitted-wishes-title {
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  color: #173b7d;
+  margin: 0;
+  font-weight: 700;
+}
+
+.submitted-wishes-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.85rem;
+}
+
+.wish-card {
+  background: #f8fbff;
+  border: 1.5px solid #dce8f9;
+  border-radius: 12px;
+  padding: 0.85rem 0.95rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  box-shadow: 0 2px 6px rgba(36, 62, 116, 0.05);
+}
+
+.wish-card-top {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.wish-card-badge {
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.wish-card-name {
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  color: #173b7d;
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.wish-card-time {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  color: #8da4c4;
+}
+
+.wish-card-msg {
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  color: #4b6694;
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* Inspirational Quote */
+.guestbook-inspirational-quote {
+  margin-top: 0.35rem;
+  padding-top: 0.75rem;
+  border-top: 1px dashed #cae0fa;
+  text-align: center;
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #243e74;
+  letter-spacing: 0.01em;
+}
+
+/* ==========================================================================
+   Responsive Breakpoints
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .guestbook-main-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .submitted-wishes-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .guestbook-window-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .guestbook-header-right {
+    align-self: center;
+  }
+}
+
+@media (max-width: 640px) {
+  .guestbook-window {
+    padding: 1.1rem;
+  }
+
+  .submitted-wishes-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .special-card-body {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .special-pip-img {
+    margin: 0 auto;
+  }
+
+  .odometer-digit-text {
+    font-size: 1.15rem;
+  }
+}

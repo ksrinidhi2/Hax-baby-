@@ -1,0 +1,525 @@
+/* ==========================================================================
+   Story Section Styles - Exact Match to Approved Storybook Reference
+   ========================================================================== */
+
+.story-section {
+  width: 100%;
+  min-height: auto;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: calc(var(--nav-height) + 20px);
+  padding-bottom: 2rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  max-width: 1312px;
+  margin: 0 auto;
+  position: relative;
+  scroll-margin-top: 0;
+}
+
+/* 1. Main Story Window Container */
+.story-window {
+  width: 100%;
+  background: #ffffff;
+  border: 2px solid #5a8fd9;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(36, 62, 116, 0.12), 0 2px 6px rgba(36, 62, 116, 0.06);
+  padding: 1.35rem 1.75rem 1.5rem;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+/* 2. Window Header Bar */
+.story-window-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 0.85rem;
+  border-bottom: 2px dashed #cae0fa;
+  gap: 1.5rem;
+}
+
+.story-header-left {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  flex: 1;
+  max-width: 780px;
+}
+
+.story-title-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.story-book-icon {
+  font-size: 1.6rem;
+  line-height: 1;
+}
+
+.story-title {
+  font-family: var(--font-heading);
+  font-size: 1.7rem;
+  color: #173b7d;
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.story-star-icon {
+  font-size: 1.35rem;
+  color: #ffb703;
+  line-height: 1;
+}
+
+.story-subtitle {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: #4b6694;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.story-header-right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-shrink: 0;
+}
+
+.story-header-pip-img {
+  max-height: 82px;
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 10px rgba(36, 62, 116, 0.1));
+}
+
+/* 3. Two-Column Main Layout: Sidebar & Reading Panel */
+.story-main-layout {
+  display: grid;
+  grid-template-columns: 290px 1fr;
+  gap: 1.2rem;
+  align-items: stretch;
+}
+
+/* ==========================================================================
+   Left Sidebar: Chapters List
+   ========================================================================== */
+.story-sidebar {
+  background: #f8fbff;
+  border: 1.5px solid #d4e5fc;
+  border-radius: 16px;
+  padding: 0.9rem 0.85rem;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.story-sidebar-header {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1.5px solid #e1eefc;
+}
+
+.sidebar-cloud-icon {
+  font-size: 1.1rem;
+}
+
+.sidebar-heading {
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #1a3668;
+  margin: 0;
+  flex: 1;
+}
+
+.sidebar-star-icon {
+  font-size: 0.95rem;
+  color: #ffb703;
+}
+
+/* Chapters Navigation Buttons List */
+.story-chapters-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.story-chapter-card {
+  display: grid;
+  grid-template-columns: 28px 48px 1fr;
+  gap: 0.6rem;
+  align-items: center;
+  padding: 0.55rem 0.65rem;
+  border-radius: 12px;
+  background: #ffffff;
+  border: 1.5px solid #e3edf9;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.2s ease;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.story-chapter-card:hover {
+  border-color: #9ac2f4;
+  background: #f4f8fe;
+  transform: translateY(-1px);
+}
+
+/* Active Chapter Highlight: Soft Pastel Pink Border & Glow */
+.story-chapter-card.is-active {
+  background: #fff5f8;
+  border: 1.5px solid #ffb8ca;
+  box-shadow: 0 2px 8px rgba(255, 142, 172, 0.2);
+}
+
+.chapter-card-number {
+  font-family: var(--font-heading);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #1e6ac9;
+  padding: 0.15rem 0.35rem;
+  background: #e9f2fd;
+  border-radius: 6px;
+  text-align: center;
+}
+
+.story-chapter-card.is-active .chapter-card-number {
+  color: #d13063;
+  background: #ffe3ea;
+}
+
+.chapter-card-thumbnail {
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #d4e5fc;
+  flex-shrink: 0;
+}
+
+.chapter-card-thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.chapter-card-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  min-width: 0;
+}
+
+.chapter-card-title {
+  font-family: var(--font-heading);
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #1a3668;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.story-chapter-card.is-active .chapter-card-title {
+  color: #d13063;
+}
+
+.chapter-card-desc {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  color: #6480a8;
+  line-height: 1.3;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ==========================================================================
+   Right Panel: Main Reading Area
+   ========================================================================== */
+.story-reading-panel {
+  background: #fbfdff;
+  border: 1.5px solid #d4e5fc;
+  border-radius: 16px;
+  padding: 1rem 1.35rem 1.2rem;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Panel Header Bar */
+.story-panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 0.65rem;
+  border-bottom: 1.5px dashed #dae7f8;
+}
+
+.story-panel-header-left {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.story-panel-pill {
+  font-family: var(--font-heading);
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #d13063;
+  background: #ffe3ea;
+  border: 1px solid #ffb5cb;
+  padding: 0.18rem 0.55rem;
+  border-radius: 999px;
+  letter-spacing: 0.04em;
+}
+
+.story-panel-title {
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
+  color: #173b7d;
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.story-panel-header-right {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.story-page-counter {
+  font-family: var(--font-heading);
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #1e6ac9;
+}
+
+.story-nav-arrows {
+  display: flex;
+  gap: 0.35rem;
+}
+
+.story-arrow-btn {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  background: #ffffff;
+  border: 1.5px solid #243e74;
+  color: #1a3668;
+  font-weight: 700;
+  font-size: 0.85rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  box-shadow: 0 2px 0 #b2cfee;
+}
+
+.story-arrow-btn:hover:not(:disabled) {
+  background: #edf5fe;
+  transform: translateY(1px);
+  box-shadow: 0 1px 0 #b2cfee;
+}
+
+.story-arrow-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* Panel Body: Left Artwork + Right Prose */
+.story-panel-body {
+  display: grid;
+  grid-template-columns: 310px 1fr;
+  gap: 1.4rem;
+  align-items: center;
+}
+
+/* Story Artwork */
+.story-artwork-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(36, 62, 116, 0.12);
+  border: 2px solid #ffffff;
+  background: #f0f7ff;
+}
+
+.story-artwork-img {
+  width: 100%;
+  max-width: 310px;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+/* Story Prose */
+.story-prose-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0.9rem;
+  min-height: 240px;
+}
+
+.story-prose-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.story-prose-title {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  color: #173b7d;
+  font-weight: 700;
+  margin: 0;
+  line-height: 1.35;
+}
+
+.story-prose-decorations {
+  display: flex;
+  gap: 0.25rem;
+  font-size: 0.95rem;
+}
+
+.story-prose-paragraphs {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.story-paragraph {
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  color: #435e88;
+  line-height: 1.55;
+  margin: 0;
+}
+
+/* Action Button */
+.story-prose-action {
+  margin-top: 0.5rem;
+}
+
+.story-action-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-heading);
+  font-size: 0.92rem;
+  font-weight: 700;
+  padding: 0.6rem 1.4rem;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  border: 2px solid #243e74;
+}
+
+/* Next Chapter Button (Pink) */
+.story-btn-next {
+  background: #ff8aa5;
+  color: #ffffff;
+  box-shadow: 0 4px 0 #cf496d;
+}
+
+.story-btn-next:hover {
+  background: #ff7695;
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 #cf496d;
+}
+
+/* Final Chapter Button (Blue "Start the Adventure!") */
+.story-btn-adventure {
+  background: #7bb5fa;
+  color: #ffffff;
+  box-shadow: 0 4px 0 #4684cb;
+}
+
+.story-btn-adventure:hover {
+  background: #65a7f9;
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 #4684cb;
+}
+
+/* ==========================================================================
+   Responsive Breakpoints
+   ========================================================================== */
+@media (max-width: 1100px) {
+  .story-main-layout {
+    grid-template-columns: 260px 1fr;
+    gap: 1rem;
+  }
+
+  .story-panel-body {
+    grid-template-columns: 260px 1fr;
+    gap: 1.1rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .story-main-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .story-window-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .story-header-right {
+    align-self: center;
+  }
+
+  .story-chapters-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 680px) {
+  .story-chapters-list {
+    grid-template-columns: 1fr;
+  }
+
+  .story-panel-body {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .story-artwork-container {
+    max-width: 280px;
+    margin: 0 auto;
+  }
+
+  .story-prose-header {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .story-prose-container {
+    min-height: auto;
+  }
+}

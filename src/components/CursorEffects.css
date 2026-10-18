@@ -1,0 +1,67 @@
+/* Cursor Effects Layer - Always Behind Interactive Elements, Never Intercepts Events */
+
+.cursor-effects-layer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  overflow: hidden;
+  user-select: none;
+}
+
+/* 1. Subtle Nightlight Flashlight Cursor Glow */
+.nightlight-cursor-glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 240px;
+  height: 240px;
+  margin-top: -120px;
+  margin-left: -120px;
+  border-radius: 50%;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  will-change: transform;
+}
+
+.nightlight-cursor-glow.is-day {
+  background: radial-gradient(circle, rgba(255, 238, 160, 0.15) 0%, rgba(255, 248, 210, 0.05) 50%, transparent 75%);
+}
+
+.nightlight-cursor-glow.is-night {
+  background: radial-gradient(circle, rgba(255, 225, 120, 0.24) 0%, rgba(255, 200, 80, 0.08) 55%, transparent 75%);
+  filter: drop-shadow(0 0 16px rgba(255, 215, 0, 0.2));
+}
+
+/* 2. Sparkle Cursor Trail */
+.cursor-sparkle-star {
+  position: absolute;
+  pointer-events: none;
+  font-family: var(--font-pixel), sans-serif;
+  line-height: 1;
+  text-shadow: 0 0 6px rgba(255, 215, 0, 0.8), 0 0 12px rgba(255, 255, 255, 0.9);
+  animation: sparkle-fade 0.65s cubic-bezier(0.2, 0.8, 0.4, 1) forwards;
+  will-change: transform, opacity;
+}
+
+@keyframes sparkle-fade {
+  0% {
+    opacity: 0.95;
+    transform: translate(-50%, -50%) scale(0.6) rotate(0deg);
+  }
+  30% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.15) rotate(45deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, calc(-50% + 18px)) scale(0.35) rotate(110deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nightlight-cursor-glow,
+  .cursor-sparkle-star {
+    display: none !important;
+  }
+}

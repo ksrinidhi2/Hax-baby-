@@ -1,0 +1,367 @@
+/* ==========================================================================
+   Projects Section Styles - Exact Match to Midnight Nursery Project Gallery
+   ========================================================================== */
+
+.projects-section {
+  width: 100%;
+  min-height: auto;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: calc(var(--nav-height) + 20px);
+  padding-bottom: 2rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  max-width: 1312px;
+  margin: 0 auto;
+  position: relative;
+  scroll-margin-top: 0;
+}
+
+/* 1. Main Gallery Window */
+.projects-window {
+  width: 100%;
+  background: #ffffff;
+  border: 2px solid #5a8fd9;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(36, 62, 116, 0.12), 0 2px 6px rgba(36, 62, 116, 0.06);
+  padding: 1.35rem 1.75rem 1.5rem;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+/* 2. Window Header Bar */
+.projects-window-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 0.9rem;
+  border-bottom: 2px dashed #cae0fa;
+  gap: 1.5rem;
+}
+
+.projects-header-left {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  flex: 1;
+  max-width: 780px;
+}
+
+.projects-title-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.projects-folder-icon {
+  font-size: 1.6rem;
+  line-height: 1;
+}
+
+.projects-title {
+  font-family: var(--font-heading);
+  font-size: 1.7rem;
+  color: #173b7d;
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.projects-star-icon {
+  font-size: 1.35rem;
+  color: #ffb703;
+  line-height: 1;
+}
+
+.projects-subtitle {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: #4b6694;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.projects-header-right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-shrink: 0;
+}
+
+.projects-header-pip-img {
+  max-height: 98px;
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 10px rgba(36, 62, 116, 0.1));
+}
+
+/* 3. 2 × 2 Projects Grid */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.2rem;
+  width: 100%;
+}
+
+/* 4. Project Card */
+.project-card {
+  display: grid;
+  grid-template-columns: 1fr 220px;
+  gap: 1.1rem;
+  border-radius: 16px;
+  padding: 1.15rem 1.25rem;
+  box-sizing: border-box;
+  align-items: center;
+  position: relative;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(36, 62, 116, 0.12);
+}
+
+/* Pink Card Theme (01 Lullaby Lab & 04 Bedtime Storybook) */
+.project-card-pink {
+  background-color: #fff5f8;
+  border: 2px solid #ffd2de;
+  box-shadow: 0 4px 16px rgba(255, 142, 172, 0.1);
+}
+
+/* Blue Card Theme (02 Nightlight Collection & 03 Dream Delivery Routes) */
+.project-card-blue {
+  background-color: #f0f7ff;
+  border: 2px solid #cce2fd;
+  box-shadow: 0 4px 16px rgba(78, 148, 236, 0.1);
+}
+
+/* Card Content (Left Column) */
+.project-card-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  gap: 0.75rem;
+}
+
+.project-card-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+/* Number Badges */
+.project-number-badge {
+  font-family: var(--font-heading);
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+  letter-spacing: 0.04em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.badge-pink {
+  background: #ffe3eb;
+  color: #d13063;
+  border: 1px solid #ffb5cb;
+}
+
+.badge-blue {
+  background: #deedfe;
+  color: #1e6ac9;
+  border: 1px solid #b7d7fb;
+}
+
+.project-icon {
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+.project-card-title {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  color: #1a3668;
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.project-card-description {
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  color: #4b6694;
+  line-height: 1.48;
+  margin: 0;
+}
+
+/* Project Feature Tags */
+.project-card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.project-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-family: var(--font-body);
+  font-size: 0.76rem;
+  font-weight: 600;
+  padding: 0.22rem 0.6rem;
+  border-radius: 999px;
+  background: #ffffff;
+  box-shadow: 0 1px 3px rgba(36, 62, 116, 0.06);
+}
+
+.project-tag-pink {
+  color: #b82855;
+  border: 1px solid #ffd0dc;
+}
+
+.project-tag-blue {
+  color: #1c5fae;
+  border: 1px solid #cbe0fc;
+}
+
+.project-tag-icon {
+  font-size: 0.82rem;
+}
+
+/* Action Buttons */
+.project-card-action {
+  margin-top: 0.2rem;
+}
+
+.project-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-heading);
+  font-size: 0.88rem;
+  font-weight: 700;
+  padding: 0.55rem 1.15rem;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  border: 2px solid #243e74;
+}
+
+/* Pink Button */
+.project-btn-pink {
+  background: #ff8aa5;
+  color: #ffffff;
+  box-shadow: 0 4px 0 #cf496d;
+}
+
+.project-btn-pink:hover {
+  background: #ff7695;
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 #cf496d;
+}
+
+/* Blue Button */
+.project-btn-blue {
+  background: #7bb5fa;
+  color: #ffffff;
+  box-shadow: 0 4px 0 #4684cb;
+}
+
+.project-btn-blue:hover {
+  background: #65a7f9;
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 #4684cb;
+}
+
+/* Card Artwork (Right Column) */
+.project-card-media {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.project-card-img {
+  width: 215px;
+  height: 215px;
+  object-fit: cover;
+  border-radius: 14px;
+  box-shadow: 0 4px 14px rgba(36, 62, 116, 0.12);
+  border: 2px solid rgba(255, 255, 255, 0.85);
+  display: block;
+}
+
+/* 5. Responsive Breakpoints */
+@media (max-width: 1200px) {
+  .project-card {
+    grid-template-columns: 1fr 180px;
+  }
+  .project-card-img {
+    width: 180px;
+    height: 180px;
+  }
+}
+
+@media (max-width: 980px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .projects-window-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .projects-header-right {
+    align-self: center;
+  }
+
+  .projects-header-pip-img {
+    max-height: 80px;
+  }
+
+  .project-card {
+    grid-template-columns: 1fr 200px;
+  }
+}
+
+@media (max-width: 640px) {
+  .projects-window {
+    padding: 1rem;
+  }
+
+  .project-card {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    text-align: center;
+  }
+
+  .project-card-header {
+    justify-content: center;
+  }
+
+  .project-card-tags {
+    justify-content: center;
+  }
+
+  .project-card-media {
+    order: -1;
+  }
+
+  .project-card-img {
+    width: 100%;
+    max-width: 220px;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    margin: 0 auto;
+  }
+}

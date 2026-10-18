@@ -1,0 +1,294 @@
+/* ==========================================================================
+   Home Section Hero Styles - Exact 100svh Match to Target Reference (Image 2)
+   ========================================================================== */
+
+.hero-section {
+  width: 100%;
+  height: 100svh;
+  max-height: 100svh;
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  background-color: #92c4f8;
+  scroll-margin-top: 0;
+  z-index: 1;
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 calc(100% - 48px), rgba(0, 0, 0, 0.6) calc(100% - 20px), transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 0%, #000 calc(100% - 48px), rgba(0, 0, 0, 0.6) calc(100% - 20px), transparent 100%);
+}
+
+/* Screen reader only utility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Returning Visitor Greeting Pill - Floating gently under navbar */
+.hero-visitor-pill {
+  position: absolute;
+  top: 96px;
+  z-index: 100;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.94);
+  border: 1.5px solid var(--color-sky-border);
+  border-radius: var(--radius-pill);
+  box-shadow: 0 4px 16px rgba(27, 46, 86, 0.16);
+  padding: 0.35rem 0.85rem;
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-navy-dark);
+  animation: visitor-slide-down 0.4s ease-out;
+  max-width: 90%;
+}
+
+@keyframes visitor-slide-down {
+  from {
+    opacity: 0;
+    transform: translateY(-12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.visitor-pill-icon {
+  font-size: 1rem;
+}
+
+.visitor-pill-dismiss {
+  background: transparent;
+  border: none;
+  color: var(--color-navy-muted);
+  font-size: 0.8rem;
+  cursor: pointer;
+  padding: 0 0.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.15s ease;
+}
+
+.visitor-pill-dismiss:hover {
+  color: var(--color-pink-deep);
+}
+
+/* Hero Stage - Container holding the pristine 1774x783 scene */
+.hero-stage-wrapper {
+  width: 100%;
+  height: 100%;
+  max-width: 1774px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  position: relative;
+}
+
+.hero-stage {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  max-height: calc(100svh - 10px);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+/* Subtle Gaze Tilt Box for Pip & Scene */
+.hero-artwork-tilt-box {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  transform-style: preserve-3d;
+  transition: transform 0.15s ease-out;
+  will-change: transform;
+}
+
+.hero-artwork-tilt-box.bow-wiggle {
+  animation: bow-wiggle-anim 0.6s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
+
+@keyframes bow-wiggle-anim {
+  10%, 90% { transform: translate3d(-1px, -2px, 0) rotate(-1.5deg); }
+  20%, 80% { transform: translate3d(2px, 1px, 0) rotate(2deg); }
+  30%, 50%, 70% { transform: translate3d(-2px, -3px, 0) rotate(-2deg); }
+  40%, 60% { transform: translate3d(2px, 1px, 0) rotate(2.5deg); }
+}
+
+.hero-scene-artwork {
+  width: 100%;
+  height: 100%;
+  max-height: calc(100svh - 10px);
+  object-fit: contain;
+  object-position: center bottom;
+  display: block;
+  user-select: none;
+  pointer-events: none;
+  image-rendering: pixelated;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+}
+
+/* Interactive Overlay Hotspots directly on the artwork buttons */
+.hero-interactive-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* The inner frame matching the actual rendered aspect ratio box of the image */
+.hero-hotspot-frame {
+  position: absolute;
+  pointer-events: none;
+}
+
+.hero-hotspot {
+  position: absolute;
+  pointer-events: auto;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  outline: none;
+  padding: 0;
+  margin: 0;
+  transition: transform 0.12s ease, filter 0.15s ease;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.hero-hotspot:focus-visible {
+  outline: 3px solid #ffc837;
+  outline-offset: 2px;
+}
+
+/* Pink "Explore the Workshop" Hotspot */
+.hero-hotspot-pink {
+  left: 10.60%;
+  top: 58.62%;
+  width: 20.41%;
+  height: 8.30%;
+  border-radius: 16px;
+}
+
+.hero-hotspot-pink:hover {
+  transform: translateY(-2px);
+  filter: drop-shadow(0 4px 12px rgba(255, 126, 158, 0.65));
+}
+
+.hero-hotspot-pink:active {
+  transform: translateY(2px);
+}
+
+/* White "Read Pip's Story" Hotspot */
+.hero-hotspot-white {
+  left: 32.86%;
+  top: 58.62%;
+  width: 20.41%;
+  height: 8.30%;
+  border-radius: 16px;
+}
+
+.hero-hotspot-white:hover {
+  transform: translateY(-2px);
+  filter: drop-shadow(0 4px 12px rgba(255, 255, 255, 0.8));
+}
+
+.hero-hotspot-white:active {
+  transform: translateY(2px);
+}
+
+/* Bottom "Scroll down to begin our journey" Hotspot */
+.hero-hotspot-scroll {
+  left: 39.06%;
+  top: 83.52%;
+  width: 21.88%;
+  height: 13.5%;
+  border-radius: 20px;
+}
+
+.hero-hotspot-scroll:hover {
+  transform: translateY(3px);
+  filter: drop-shadow(0 4px 8px rgba(32, 60, 114, 0.3));
+}
+
+/* Pip's Ticklish Bow Hotspot */
+.hero-hotspot-bow {
+  left: 73.0%;
+  top: 35.5%;
+  width: 5.5%;
+  height: 5.8%;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.hero-hotspot-bow:hover {
+  transform: scale(1.15);
+  filter: drop-shadow(0 0 8px rgba(255, 126, 158, 0.9));
+}
+
+.hero-hotspot-bow:active,
+.hero-hotspot-bow.is-tickled {
+  transform: scale(0.92);
+}
+
+/* Floating Pip Tickle Bubble */
+.pip-tickle-bubble {
+  position: absolute;
+  left: 65%;
+  top: 25%;
+  background: #ffffff;
+  border: 2px solid var(--color-pink-primary);
+  border-radius: var(--radius-pill);
+  box-shadow: 0 6px 20px rgba(219, 75, 113, 0.3);
+  padding: 0.45rem 0.95rem;
+  font-family: var(--font-heading);
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--color-pink-deep);
+  pointer-events: none;
+  z-index: 50;
+  white-space: nowrap;
+  animation: tickle-pop 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.pip-tickle-bubble::after {
+  content: '';
+  position: absolute;
+  bottom: -7px;
+  left: 30%;
+  width: 0;
+  height: 0;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-top: 7px solid var(--color-pink-primary);
+}
+
+@keyframes tickle-pop {
+  0% {
+    opacity: 0;
+    transform: scale(0.6) translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}

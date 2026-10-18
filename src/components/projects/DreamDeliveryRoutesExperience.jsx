@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import './DreamDeliveryRoutesExperience.css';
 import deliveryPipImg from '../../../assets/project_dream_delivery.png';
 import observatoryImg from '../../../assets/pip_hero_observatory.png';
+import { useSite } from '../../context/SiteContext';
 
 const DESTINATIONS = [
   {
@@ -55,6 +56,7 @@ const DESTINATIONS = [
 ];
 
 export default function DreamDeliveryRoutesExperience({ onBack }) {
+  const { isMuted } = useSite();
   const [selectedDestId, setSelectedDestId] = useState('star-cottage');
   const [deliveryState, setDeliveryState] = useState('idle'); // 'idle' | 'flying' | 'completed'
   const [deliveryProgress, setDeliveryProgress] = useState(0);
@@ -71,6 +73,7 @@ export default function DreamDeliveryRoutesExperience({ onBack }) {
 
   // Play gentle sound effects via Web Audio API
   const playSfx = (type) => {
+    if (isMuted) return;
     try {
       const AudioCtx = window.AudioContext || window.webkitAudioContext;
       if (!AudioCtx) return;

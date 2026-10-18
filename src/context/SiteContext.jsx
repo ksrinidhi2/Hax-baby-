@@ -5,21 +5,37 @@ const SiteContext = createContext(null);
 export function SiteProvider({ children }) {
   // 1. Theme State (Day / Night)
   const [theme, setTheme] = useState(() => {
-    return localStorage.getItem('pip_theme') || 'day';
+    try {
+      return localStorage.getItem('pip_theme') || 'day';
+    } catch {
+      return 'day';
+    }
   });
 
   // 2. Sound & Global Mute State
   const [isMuted, setIsMuted] = useState(() => {
-    return localStorage.getItem('pip_muted') === 'true';
+    try {
+      return localStorage.getItem('pip_muted') === 'true';
+    } catch {
+      return false;
+    }
   });
+  const isMutedRef = useRef(isMuted);
+
+  useEffect(() => {
+    isMutedRef.current = isMuted;
+    try {
+      localStorage.setItem('pip_muted', isMuted ? 'true' : 'false');
+    } catch {
+      // ignore
+    }
+  }, [isMuted]);
 
   // 3. Chaos Mode State
   const [isChaosMode, setIsChaosMode] = useState(false);
 
   // 4. Sparkle Cursor Trail State
-  const [sparklesActive, setSparklesActive] = useState(() => {
-    return localStorage.getItem('pip_sparkles') !== 'false';
-  });
+  const [sparklesActive, setSparklesActive] = useState(true);
 
   // 5. Nightlight Cursor Glow State
   const [nightlightCursor, setNightlightCursor] = useState(true);
@@ -55,31 +71,29 @@ export function SiteProvider({ children }) {
       body.classList.remove('theme-night');
     }
 
-    localStorage.setItem('pip_theme', theme);
+    try {
+      localStorage.setItem('pip_theme', theme);
+    } catch {
+      // ignore
+    }
   }, [theme]);
 
-  // Apply Chaos Mode class to body
+  // Apply Chaos Mode class to body and documentElement
   useEffect(() => {
+    const root = document.documentElement;
     const body = document.body;
     if (isChaosMode) {
+      root.classList.add('chaos-mode-active');
       body.classList.add('chaos-mode-active');
     } else {
+      root.classList.remove('chaos-mode-active');
       body.classList.remove('chaos-mode-active');
     }
     return () => {
+      root.classList.remove('chaos-mode-active');
       body.classList.remove('chaos-mode-active');
     };
   }, [isChaosMode]);
-
-  // Persist Mute Preference
-  useEffect(() => {
-    localStorage.setItem('pip_muted', isMuted ? 'true' : 'false');
-  }, [isMuted]);
-
-  // Persist Sparkles Preference
-  useEffect(() => {
-    localStorage.setItem('pip_sparkles', sparklesActive ? 'true' : 'false');
-  }, [sparklesActive]);
 
   // Returning visitor check
   useEffect(() => {
@@ -99,8 +113,8 @@ export function SiteProvider({ children }) {
   }, []);
 
   // Web Audio Synthesizer for UI sound effects (respects global mute)
-  const playSoundEffect = (type) => {
-    if (isMuted) return;
+  const playSoundEffect = (type, forcePlay = false) => {
+    if (isMutedRef.current && !forcePlay) return;
 
     try {
       const AudioCtx = window.AudioContext || window.webkitAudioContext;
@@ -140,16 +154,34 @@ export function SiteProvider({ children }) {
         const gain = ctx.createGain();
         osc.type = 'sine';
         osc.frequency.setValueAtTime(587.33, now);
-        osc.frequency.exponentialRampToValueAtTime(880.00, now + 0.06);
+        osc.frequency.exponentialRampToValueAtTime(880.00, now + 0.07);
 
         gain.gain.setValueAtTime(0.001, now);
-        gain.gain.linearRampToValueAtTime(0.1, now + 0.015);
-        gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.08);
+        gain.gain.linearRampToValueAtTime(0.12, now + 0.015);
+        gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.09);
 
         osc.connect(gain);
         gain.connect(ctx.destination);
         osc.start(now);
-        osc.stop(now + 0.08);
+        osc.stop(now + 0.09);
+      } else if (type === 'unmute') {
+        // Joyful two-tone rising chime to clearly confirm audio unmuted
+        const notes = [659.25, 880.00];
+        notes.forEach((freq, idx) => {
+          const osc = ctx.createOscillator();
+          const gain = ctx.createGain();
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(freq, now + idx * 0.1);
+
+          gain.gain.setValueAtTime(0.001, now + idx * 0.1);
+          gain.gain.linearRampToValueAtTime(0.15, now + idx * 0.1 + 0.02);
+          gain.gain.exponentialRampToValueAtTime(0.0001, now + idx * 0.1 + 0.22);
+
+          osc.connect(gain);
+          gain.connect(ctx.destination);
+          osc.start(now + idx * 0.1);
+          osc.stop(now + idx * 0.1 + 0.23);
+        });
       } else if (type === 'star') {
         // Magical twinkle chime
         const freqs = [783.99, 1046.50, 1318.51];
@@ -193,17 +225,31 @@ export function SiteProvider({ children }) {
 
   // Toggle Theme Handler
   const toggleTheme = () => {
-    playSoundEffect('toggle');
-    setTheme((prev) => (prev === 'day' ? 'night' : 'day'));
+    setTheme((prev) => {
+      const next = prev === 'day' ? 'night' : 'day';
+      try {
+        localStorage.setItem('pip_theme', next);
+      } catch {
+        // ignore
+      }
+      playSoundEffect('toggle');
+      return next;
+    });
   };
 
   // Toggle Mute Handler
   const toggleMute = () => {
     setIsMuted((prev) => {
       const next = !prev;
+      isMutedRef.current = next;
+      try {
+        localStorage.setItem('pip_muted', next ? 'true' : 'false');
+      } catch {
+        // ignore
+      }
       if (!next) {
-        // Unmuting: play a subtle unmuted notification beep
-        setTimeout(() => playSoundEffect('click'), 20);
+        // Play clear chime confirming unmuted sound
+        setTimeout(() => playSoundEffect('unmute', true), 20);
       }
       return next;
     });
@@ -211,8 +257,15 @@ export function SiteProvider({ children }) {
 
   // Toggle Chaos Mode
   const toggleChaosMode = () => {
-    playSoundEffect('chaos');
-    setIsChaosMode((prev) => !prev);
+    setIsChaosMode((prev) => {
+      const next = !prev;
+      if (next) {
+        playSoundEffect('chaos');
+      } else {
+        playSoundEffect('click');
+      }
+      return next;
+    });
   };
 
   // Toggle Sparkles

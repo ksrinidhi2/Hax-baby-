@@ -136,16 +136,6 @@ export default function Navigation() {
           >
             <span>🎮</span> {isChaosMode ? 'Calm' : 'Chaos'}
           </button>
-
-          <button
-            type="button"
-            className={`nav-tool-btn nav-tool-star ${sparklesActive ? 'is-active' : ''}`}
-            onClick={openMiniGame}
-            title="Star Catch Mini-Game ⭐"
-            aria-label="Play Star Catch Mini-Game"
-          >
-            ⭐
-          </button>
         </div>
       </nav>
     </header>

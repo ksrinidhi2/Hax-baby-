@@ -4,7 +4,6 @@ import { useSite } from '../context/SiteContext';
 
 export default function FooterCredits() {
   const { triggerTickleBow } = useSite();
-  const digits = ['0', '0', '0', '0', '7'];
 
   const scrollToTop = () => {
     const isReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -24,46 +23,7 @@ export default function FooterCredits() {
 
   return (
     <footer className="site-credits-footer" aria-label="Website Credits">
-      {/* 1. Dreams you've delivered Odometer Counter */}
-      <div className="credits-counter-block">
-        <span className="counter-label">Dreams you've delivered</span>
-        <div className="footer-odometer-box" role="status" aria-label="Dreams delivered: 00007">
-          {digits.map((digit, idx) => (
-            <div key={idx} className="footer-odometer-slot">
-              <span className="footer-odometer-digit">{digit}</span>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* 2. Webring Navigation Line */}
-      <nav className="webring-nav-line" aria-label="Midnight Nursery Webring">
-        <span className="webring-arrow">←</span>
-        <a
-          href="#prev"
-          className="webring-nav-link"
-          onClick={(e) => {
-            e.preventDefault();
-          }}
-        >
-          prev
-        </a>
-        <span className="webring-bullet">·</span>
-        <span className="webring-ring-name">Midnight Nursery Ring</span>
-        <span className="webring-bullet">·</span>
-        <a
-          href="#next"
-          className="webring-nav-link"
-          onClick={(e) => {
-            e.preventDefault();
-          }}
-        >
-          next
-        </a>
-        <span className="webring-arrow">→</span>
-      </nav>
-
-      {/* 3. Back to Top Button */}
+      {/* 1. Back to Top Button */}
       <div className="footer-back-to-top-container">
         <button
           type="button"
@@ -76,21 +36,27 @@ export default function FooterCredits() {
         </button>
       </div>
 
-      {/* 4. Credits Paragraph */}
-      <p className="credits-main-paragraph">
-        <strong>Credits:</strong> Pip's character and canon by{' '}
-        <a
-          href="https://hax.baby"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="credits-author-link"
-        >
-          haX.baby
-        </a>{' '}
-        (Baby's First Website). All illustrations are SVG and CSS drawn in code (written with AI assistance from Claude). Fonts: Fraunces and Fredoka via Google Fonts (OFL). Every sound is synthesized live with the Web Audio API. Built by [YOUR NAME] during 17–19 Oct 2026.
-      </p>
+      {/* 2. Unified GenGeez Credits Section */}
+      <div className="gengeez-credits-card">
+        <div className="gengeez-credits-header">
+          <span className="credits-deco-symbol" aria-hidden="true">⭐</span>
+          <h3 className="gengeez-credits-heading">A Little Dream, Made With Love</h3>
+          <span className="credits-deco-symbol" aria-hidden="true">✨</span>
+        </div>
 
-      {/* 5. Subtle Easter Egg Line */}
+        <div className="gengeez-credits-body">
+          <p className="gengeez-project-title">Pip's Little Dream Desktop</p>
+          <p className="gengeez-team-credit">
+            Created with love by <strong>GenGeez</strong>
+          </p>
+          <p className="gengeez-character-credit">A little dream world for Pip</p>
+          <p className="gengeez-closing-line">
+            Thanks for visiting our little corner of the sky! ☁️✨
+          </p>
+        </div>
+      </div>
+
+      {/* 3. Subtle Easter Egg Line */}
       <button
         type="button"
         onClick={handleWhisperClick}

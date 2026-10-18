@@ -6,6 +6,7 @@ import ch2Img from '../../../assets/story_chapter_2.png';
 import ch3Img from '../../../assets/story_chapter_3.png';
 import ch4Img from '../../../assets/story_chapter_4.png';
 import pipPortraitImg from '../../../assets/pip_portrait.png';
+import { useSite } from '../../context/SiteContext';
 
 const STORIES = [
   {
@@ -83,6 +84,7 @@ const STORIES = [
 ];
 
 export default function BedtimeStorybookExperience({ onBack }) {
+  const { isMuted } = useSite();
   const [viewMode, setViewMode] = useState('chapters'); // 'chapters' | 'reading' | 'ending'
   const [activeChapterIndex, setActiveChapterIndex] = useState(0);
 
@@ -91,6 +93,7 @@ export default function BedtimeStorybookExperience({ onBack }) {
 
   // Sound effect helper
   const playPageTurnSound = () => {
+    if (isMuted) return;
     try {
       const AudioCtx = window.AudioContext || window.webkitAudioContext;
       if (!AudioCtx) return;

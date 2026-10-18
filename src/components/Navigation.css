@@ -241,7 +241,17 @@
 /* Mobile & Tablet Responsiveness */
 @media (max-width: 1024px) {
   .nav-actions {
+    display: flex;
+    gap: 0.35rem;
+  }
+
+  .theme-mode-text {
     display: none;
+  }
+
+  .nav-tool-btn {
+    padding: 0.3rem 0.55rem;
+    font-size: 0.8rem;
   }
 }
 
@@ -252,12 +262,22 @@
   }
 
   .nav-container {
-    padding: 0.4rem 0.75rem;
-    border-radius: var(--radius-md);
+    padding: 0.35rem 0.65rem;
+    border-radius: var(--radius-pill);
+    gap: 0.4rem;
   }
 
   .nav-brand-subtitle {
     display: none;
+  }
+
+  .nav-brand-title {
+    font-size: 0.92rem;
+  }
+
+  .nav-brand-avatar {
+    width: 34px;
+    height: 34px;
   }
 
   .nav-links {
@@ -265,7 +285,7 @@
   }
 
   .nav-link {
-    padding: 0.35rem 0.5rem;
+    padding: 0.3rem 0.45rem;
     font-size: 0.85rem;
   }
 
@@ -274,6 +294,26 @@
   }
 
   .nav-link-icon {
-    font-size: 1.15rem;
+    font-size: 1.1rem;
+  }
+
+  .nav-actions {
+    gap: 0.25rem;
+  }
+
+  .nav-tool-btn {
+    padding: 0.25rem 0.45rem;
+    font-size: 0.75rem;
+    gap: 0.2rem;
+  }
+
+  .theme-pill-toggle {
+    padding: 0.15rem 0.35rem;
+  }
+
+  .theme-indicator {
+    width: 20px;
+    height: 20px;
+    font-size: 0.75rem;
   }
 }

@@ -25,9 +25,17 @@
   width: 100%;
   background: #ffffff;
   border: 2px solid #5a8fd9;
-  border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(36, 62, 116, 0.12), 0 2px 6px rgba(36, 62, 116, 0.06);
-  padding: 1.35rem 1.75rem 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 10px 28px rgba(36, 62, 116, 0.14), 0 2px 6px rgba(36, 62, 116, 0.08);
+  padding: 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.about-window-body {
+  padding: 1.25rem 1.6rem 1.45rem;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -501,6 +509,12 @@
   }
 }
 
+@media (max-width: 640px) {
+  .about-window-body {
+    padding: 1rem 0.85rem;
+  }
+}
+
 .bow-wiggle {
   animation: about-bow-wiggle 0.6s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
 }
@@ -510,4 +524,93 @@
   20%, 80% { transform: translate3d(2px, 1px, 0) rotate(2.5deg); }
   30%, 50%, 70% { transform: translate3d(-2px, -3px, 0) rotate(-2deg); }
   40%, 60% { transform: translate3d(2px, 1px, 0) rotate(3deg); }
+}
+
+/* Night Mode Support for About Section */
+body.theme-night .about-window {
+  background: rgba(28, 43, 80, 0.96);
+  border-color: #5d8fda;
+}
+
+body.theme-night .about-header-title {
+  color: #e0ecff;
+}
+
+body.theme-night .about-header-right {
+  color: #a6c8f8;
+}
+
+body.theme-night .about-window-header {
+  border-bottom-color: #3d588e;
+}
+
+body.theme-night .meet-pip-title {
+  color: #e0ecff;
+}
+
+body.theme-night .pip-bio-text {
+  color: #cbdcfc;
+}
+
+body.theme-night .pip-speech-bubble {
+  background: #243869;
+  color: #ffd6e4;
+  border-color: #5d8fda;
+}
+
+body.theme-night .pip-speech-bubble::before {
+  border-top-color: #243869;
+}
+
+body.theme-night .fav-things-container {
+  background: #203362;
+  border-color: #4b6fae;
+}
+
+body.theme-night .fav-things-header {
+  color: #e0ecff;
+}
+
+body.theme-night .fav-card {
+  background: #273d74;
+  border-color: #4f73b5;
+}
+
+body.theme-night .fav-card-title {
+  color: #e0ecff;
+}
+
+body.theme-night .fav-card-desc {
+  color: #b0cdfa;
+}
+
+body.theme-night .profile-retro-window {
+  background: #223565;
+  border-color: #5d8fda;
+}
+
+body.theme-night .profile-window-header {
+  background: #2c427c;
+  border-bottom-color: #4f73b5;
+}
+
+body.theme-night .profile-window-title {
+  color: #e0ecff;
+}
+
+body.theme-night .profile-row {
+  border-bottom-color: #3b548c;
+}
+
+body.theme-night .profile-label {
+  color: #cbdcfc;
+}
+
+body.theme-night .profile-val {
+  color: #b0cdfa;
+}
+
+body.theme-night .about-inspirational-quote {
+  border-top-color: #3b548c;
+  color: #cbdcfc;
 }

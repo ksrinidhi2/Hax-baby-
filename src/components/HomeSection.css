@@ -347,15 +347,23 @@
   font-size: 1.15rem;
 }
 
-/* Right Column: Pip & Observatory Castle Artwork (Separate Illustration Element) */
+/* Right Column: Reserved for Pip Artwork */
 .hero-artwork-col {
   flex: 1;
-  max-width: 620px;
+  max-width: 540px;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
   z-index: 2;
+  min-height: 200px;
+}
+
+.hero-artwork-slot {
+  width: 100%;
+  max-width: 480px;
+  min-height: 180px;
+  pointer-events: none;
 }
 
 .hero-illustration-wrapper {
@@ -712,8 +720,7 @@ body.theme-night .scroll-label {
   }
 
   .hero-artwork-col {
-    max-width: 440px;
-    width: 100%;
+    display: none;
   }
 }
 

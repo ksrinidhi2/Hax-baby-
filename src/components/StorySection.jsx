@@ -5,6 +5,7 @@ import imgChapter1 from '../../assets/story_chapter_1.png';
 import imgChapter2 from '../../assets/story_chapter_2.png';
 import imgChapter3 from '../../assets/story_chapter_3.png';
 import imgChapter4 from '../../assets/story_chapter_4.png';
+import { useSite } from '../context/SiteContext';
 
 const CHAPTERS_DATA = [
   {
@@ -66,6 +67,7 @@ const CHAPTERS_DATA = [
 
 export default function StorySection() {
   const [activeChapterIndex, setActiveChapterIndex] = useState(0);
+  const { playSound } = useSite();
   const isManualNavRef = React.useRef(false);
   const manualTimerRef = React.useRef(null);
 
@@ -138,29 +140,71 @@ export default function StorySection() {
   return (
     <section id="story" className="story-section" aria-label="Pip's Story">
       {/* Main Storybook Window */}
-      <div className="story-window">
-        {/* Header Bar */}
-        <div className="story-window-header">
-          <div className="story-header-left">
-            <div className="story-title-row">
-              <span className="story-book-icon" aria-hidden="true">📖</span>
-              <h2 className="story-title">Pip's Story</h2>
-              <span className="story-star-icon" aria-hidden="true">⭐</span>
-            </div>
-            <p className="story-subtitle">
-              A little journey filled with stars, friendship and dreams.<br />
-              Explore how Pip found its purpose and became a Junior Dream Engineer.
-            </p>
+      <div className="story-window retro-window">
+        {/* Retro Window Titlebar */}
+        <div className="retro-window-titlebar">
+          <div className="retro-titlebar-left">
+            <span className="retro-titlebar-icon" aria-hidden="true">📖</span>
+            <span className="retro-titlebar-text">Story (story.exe)</span>
+            <span className="retro-titlebar-star" aria-hidden="true">⭐</span>
           </div>
-
-          <div className="story-header-right">
-            <img
-              src={headerPipImg}
-              alt="Pip with bunny plushie on clouds: Every big dream starts with a small star!"
-              className="story-header-pip-img"
-            />
+          <div className="retro-window-controls" aria-hidden="true">
+            <button
+              type="button"
+              className="retro-win-btn"
+              onClick={() => playSound && playSound('click')}
+              title="Minimize"
+              aria-label="Minimize Story window"
+              tabIndex="-1"
+            >
+              —
+            </button>
+            <button
+              type="button"
+              className="retro-win-btn"
+              onClick={() => playSound && playSound('click')}
+              title="Maximize"
+              aria-label="Maximize Story window"
+              tabIndex="-1"
+            >
+              □
+            </button>
+            <button
+              type="button"
+              className="retro-win-btn retro-win-btn-close"
+              onClick={() => playSound && playSound('click')}
+              title="Close"
+              aria-label="Close Story window"
+              tabIndex="-1"
+            >
+              ✕
+            </button>
           </div>
         </div>
+
+        <div className="story-window-body">
+          {/* Header Bar */}
+          <div className="story-window-header">
+            <div className="story-header-left">
+              <div className="story-title-row">
+                <span className="story-book-icon" aria-hidden="true">📖</span>
+                <h2 className="story-title">Pip's Story</h2>
+                <span className="story-star-icon" aria-hidden="true">⭐</span>
+              </div>
+              <p className="story-subtitle">
+                A little journey filled with stars, friendship and dreams.<br />
+                Explore how Pip found its purpose and became a Junior Dream Engineer.
+              </p>
+            </div>
+
+            <div className="story-header-right">
+              <img
+                src={headerPipImg}
+                alt="Pip with bunny plushie on clouds: Every big dream starts with a small star!"
+                className="story-header-pip-img"
+              />
+            </div>
+          </div>
 
         {/* 2-Column Storybook Layout */}
         <div className="story-main-layout">
@@ -283,6 +327,7 @@ export default function StorySection() {
               </div>
             </div>
           </main>
+        </div>
         </div>
       </div>
     </section>

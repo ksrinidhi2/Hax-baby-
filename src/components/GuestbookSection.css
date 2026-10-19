@@ -25,9 +25,17 @@
   width: 100%;
   background: #ffffff;
   border: 2px solid #5a8fd9;
-  border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(36, 62, 116, 0.12), 0 2px 6px rgba(36, 62, 116, 0.06);
-  padding: 1.35rem 1.75rem 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 10px 28px rgba(36, 62, 116, 0.14), 0 2px 6px rgba(36, 62, 116, 0.08);
+  padding: 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.guestbook-window-body {
+  padding: 1.25rem 1.6rem 1.45rem;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -560,8 +568,8 @@
 }
 
 @media (max-width: 640px) {
-  .guestbook-window {
-    padding: 1.1rem;
+  .guestbook-window-body {
+    padding: 1rem 0.85rem;
   }
 
   .submitted-wishes-grid {
@@ -580,4 +588,84 @@
   .odometer-digit-text {
     font-size: 1.15rem;
   }
+}
+
+/* Night Mode Support for Guestbook Section */
+body.theme-night .guestbook-window {
+  background: rgba(28, 43, 80, 0.96);
+  border-color: #5d8fda;
+}
+
+body.theme-night .guestbook-title {
+  color: #e0ecff;
+}
+
+body.theme-night .guestbook-subtitle {
+  color: #b0cdfa;
+}
+
+body.theme-night .guestbook-window-header {
+  border-bottom-color: #3d588e;
+}
+
+body.theme-night .guestbook-card {
+  background: #203159;
+  border-color: #43639e;
+}
+
+body.theme-night .card-heading {
+  color: #e0ecff;
+}
+
+body.theme-night .form-label {
+  color: #cbdcfc;
+}
+
+body.theme-night .form-input,
+body.theme-night .form-textarea {
+  background: #1c2a4f;
+  border-color: #43639e;
+  color: #ffffff;
+}
+
+body.theme-night .form-input:focus,
+body.theme-night .form-textarea:focus {
+  border-color: #729ded;
+  background: #223565;
+}
+
+body.theme-night .icon-badge-btn {
+  background: #1c2a4f;
+  border-color: #43639e;
+}
+
+body.theme-night .icon-badge-btn:hover {
+  background: #273d74;
+}
+
+body.theme-night .icon-badge-btn.is-selected {
+  background: #334e8a;
+  border-color: #729ded;
+}
+
+body.theme-night .wish-card {
+  background: #273d74;
+  border-color: #4f73b5;
+}
+
+body.theme-night .wish-card-name {
+  color: #e0ecff;
+}
+
+body.theme-night .wish-card-time {
+  color: #9cbfee;
+}
+
+body.theme-night .wish-card-msg {
+  color: #cbdcfc;
+}
+
+body.theme-night .guestbook-inspirational-quote {
+  border-top-color: #3d588e;
+  color: #cbdcfc;
 }

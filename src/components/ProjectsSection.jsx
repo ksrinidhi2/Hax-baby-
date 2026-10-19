@@ -11,6 +11,7 @@ import LullabyLabExperience from './projects/LullabyLabExperience';
 import NightlightCollectionExperience from './projects/NightlightCollectionExperience';
 import DreamDeliveryRoutesExperience from './projects/DreamDeliveryRoutesExperience';
 import BedtimeStorybookExperience from './projects/BedtimeStorybookExperience';
+import { useSite } from '../context/SiteContext';
 
 const PROJECTS_DATA = [
   {
@@ -89,6 +90,7 @@ const PROJECTS_DATA = [
 
 export default function ProjectsSection() {
   const [activeProject, setActiveProject] = useState(null);
+  const { playSound } = useSite();
 
   const handleOpenProject = (id) => {
     setActiveProject(id);
@@ -127,20 +129,62 @@ export default function ProjectsSection() {
 
       {/* When no project is active, display the original approved 2x2 projects gallery */}
       {!activeProject && (
-        <div className="projects-window">
-          {/* Header Section */}
-          <div className="projects-window-header">
-            <div className="projects-header-left">
-              <div className="projects-title-row">
-                <span className="projects-folder-icon" aria-hidden="true">📁</span>
-                <h2 className="projects-title">Projects</h2>
-                <span className="projects-star-icon" aria-hidden="true">⭐</span>
-              </div>
-              <p className="projects-subtitle">
-                Pip works on tiny magical projects at the Midnight Nursery to help the neighbourhood's little ghosts
-                and creatures fall asleep. Each project is a piece of love, curiosity and a little bit of stardust!
-              </p>
+        <div className="projects-window retro-window">
+          {/* Retro Window Titlebar */}
+          <div className="retro-window-titlebar">
+            <div className="retro-titlebar-left">
+              <span className="retro-titlebar-icon" aria-hidden="true">📁</span>
+              <span className="retro-titlebar-text">Projects (projects.exe)</span>
+              <span className="retro-titlebar-star" aria-hidden="true">⭐</span>
             </div>
+            <div className="retro-window-controls" aria-hidden="true">
+              <button
+                type="button"
+                className="retro-win-btn"
+                onClick={() => playSound && playSound('click')}
+                title="Minimize"
+                aria-label="Minimize Projects window"
+                tabIndex="-1"
+              >
+                —
+              </button>
+              <button
+                type="button"
+                className="retro-win-btn"
+                onClick={() => playSound && playSound('click')}
+                title="Maximize"
+                aria-label="Maximize Projects window"
+                tabIndex="-1"
+              >
+                □
+              </button>
+              <button
+                type="button"
+                className="retro-win-btn retro-win-btn-close"
+                onClick={() => playSound && playSound('click')}
+                title="Close"
+                aria-label="Close Projects window"
+                tabIndex="-1"
+              >
+                ✕
+              </button>
+            </div>
+          </div>
+
+          <div className="projects-window-body">
+            {/* Header Section */}
+            <div className="projects-window-header">
+              <div className="projects-header-left">
+                <div className="projects-title-row">
+                  <span className="projects-folder-icon" aria-hidden="true">📁</span>
+                  <h2 className="projects-title">Projects</h2>
+                  <span className="projects-star-icon" aria-hidden="true">⭐</span>
+                </div>
+                <p className="projects-subtitle">
+                  Pip works on tiny magical projects at the Midnight Nursery to help the neighbourhood's little ghosts
+                  and creatures fall asleep. Each project is a piece of love, curiosity and a little bit of stardust!
+                </p>
+              </div>
 
             <div className="projects-header-right">
               <img
@@ -209,6 +253,7 @@ export default function ProjectsSection() {
                 </div>
               </article>
             ))}
+          </div>
           </div>
         </div>
       )}

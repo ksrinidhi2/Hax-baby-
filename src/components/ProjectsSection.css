@@ -25,9 +25,17 @@
   width: 100%;
   background: #ffffff;
   border: 2px solid #5a8fd9;
-  border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(36, 62, 116, 0.12), 0 2px 6px rgba(36, 62, 116, 0.06);
-  padding: 1.35rem 1.75rem 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 10px 28px rgba(36, 62, 116, 0.14), 0 2px 6px rgba(36, 62, 116, 0.08);
+  padding: 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.projects-window-body {
+  padding: 1.25rem 1.6rem 1.45rem;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -335,8 +343,8 @@
 }
 
 @media (max-width: 640px) {
-  .projects-window {
-    padding: 1rem;
+  .projects-window-body {
+    padding: 1rem 0.85rem;
   }
 
   .project-card {
@@ -364,4 +372,46 @@
     aspect-ratio: 1 / 1;
     margin: 0 auto;
   }
+}
+
+/* Night Mode Support for Projects Section */
+body.theme-night .projects-window {
+  background: rgba(28, 43, 80, 0.96);
+  border-color: #5d8fda;
+}
+
+body.theme-night .projects-title {
+  color: #e0ecff;
+}
+
+body.theme-night .projects-subtitle {
+  color: #b0cdfa;
+}
+
+body.theme-night .projects-window-header {
+  border-bottom-color: #3d588e;
+}
+
+body.theme-night .project-card-pink {
+  background-color: #2e2640;
+  border-color: #5d3f66;
+}
+
+body.theme-night .project-card-blue {
+  background-color: #203159;
+  border-color: #43639e;
+}
+
+body.theme-night .project-card-title {
+  color: #e0ecff;
+}
+
+body.theme-night .project-card-description {
+  color: #cbdcfc;
+}
+
+body.theme-night .project-tag {
+  background: #1c2a4f;
+  border-color: #43639e;
+  color: #cbdcfc;
 }

@@ -8,25 +8,67 @@ import iconNursery from '../../assets/pip_item_nursery.png';
 import { useSite } from '../context/SiteContext';
 
 export default function AboutSection() {
-  const { bowTickled, triggerTickleBow } = useSite();
+  const { bowTickled, triggerTickleBow, playSound } = useSite();
 
   return (
     <section id="about" className="about-section" aria-label="About Pip">
       {/* 1. Main Dreamy About Window */}
-      <div className="about-window">
-        {/* Window Header */}
-        <div className="about-window-header">
-          <div className="about-header-left">
-            <span className="about-header-icon" aria-hidden="true">☁️</span>
-            <h2 className="about-header-title">About Pip</h2>
-            <span className="about-header-star" aria-hidden="true">⭐</span>
+      <div className="about-window retro-window">
+        {/* Retro Window Titlebar */}
+        <div className="retro-window-titlebar">
+          <div className="retro-titlebar-left">
+            <span className="retro-titlebar-icon" aria-hidden="true">☁️</span>
+            <span className="retro-titlebar-text">About (about.exe)</span>
+            <span className="retro-titlebar-star" aria-hidden="true">⭐</span>
           </div>
-          <div className="about-header-right">
-            <span className="about-tagline-text">A tiny dreamer with a big heart!</span>
-            <span className="about-header-star-small" aria-hidden="true">⭐</span>
-            <span className="about-header-moon" aria-hidden="true">🌙</span>
+          <div className="retro-window-controls" aria-hidden="true">
+            <button
+              type="button"
+              className="retro-win-btn"
+              onClick={() => playSound && playSound('click')}
+              title="Minimize"
+              aria-label="Minimize About window"
+              tabIndex="-1"
+            >
+              —
+            </button>
+            <button
+              type="button"
+              className="retro-win-btn"
+              onClick={() => playSound && playSound('click')}
+              title="Maximize"
+              aria-label="Maximize About window"
+              tabIndex="-1"
+            >
+              □
+            </button>
+            <button
+              type="button"
+              className="retro-win-btn retro-win-btn-close"
+              onClick={() => playSound && playSound('click')}
+              title="Close"
+              aria-label="Close About window"
+              tabIndex="-1"
+            >
+              ✕
+            </button>
           </div>
         </div>
+
+        <div className="about-window-body">
+          {/* Window Header */}
+          <div className="about-window-header">
+            <div className="about-header-left">
+              <span className="about-header-icon" aria-hidden="true">☁️</span>
+              <h2 className="about-header-title">About Pip</h2>
+              <span className="about-header-star" aria-hidden="true">⭐</span>
+            </div>
+            <div className="about-header-right">
+              <span className="about-tagline-text">A tiny dreamer with a big heart!</span>
+              <span className="about-header-star-small" aria-hidden="true">⭐</span>
+              <span className="about-header-moon" aria-hidden="true">🌙</span>
+            </div>
+          </div>
 
         {/* 3-Column Content Layout */}
         <div className="about-content-grid">
@@ -188,6 +230,7 @@ export default function AboutSection() {
         {/* Inspirational Quote */}
         <div className="about-inspirational-quote">
           “Every dream, no matter how small, makes the world a little brighter.”
+        </div>
         </div>
       </div>
     </section>

@@ -296,6 +296,142 @@ h1, h2, h3, h4, h5, h6 {
   position: relative;
 }
 
+/* ==========================================================================
+   Retro Desktop Application Window Classes (Win98 / Pastel Pixel OS)
+   ========================================================================== */
+.retro-window {
+  width: 100%;
+  background: #ffffff;
+  border: 2px solid #5a8fd9;
+  border-radius: 12px;
+  box-shadow: 0 10px 28px rgba(36, 62, 116, 0.14), 0 2px 6px rgba(36, 62, 116, 0.08);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+}
+
+/* Retro Window Titlebar */
+.retro-window-titlebar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(90deg, #d2e4fc 0%, #bddbfa 100%);
+  border-bottom: 2px solid #5a8fd9;
+  padding: 0.38rem 0.85rem;
+  user-select: none;
+  gap: 0.75rem;
+  box-sizing: border-box;
+}
+
+.retro-titlebar-left {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #173b7d;
+  letter-spacing: 0.01em;
+}
+
+.retro-titlebar-icon {
+  font-size: 1.05rem;
+  line-height: 1;
+}
+
+.retro-titlebar-star {
+  font-size: 0.85rem;
+  color: #ffb703;
+}
+
+/* Retro Window Control Buttons [—] [□] [✕] */
+.retro-window-controls {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.retro-win-btn {
+  width: 22px;
+  height: 20px;
+  border: 1.5px solid #5a8fd9;
+  border-radius: 3px;
+  background: #ffffff;
+  color: #243e74;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', monospace, sans-serif;
+  font-size: 11px;
+  font-weight: 800;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+  box-shadow: 1px 1px 0 rgba(90, 143, 217, 0.35);
+  transition: background-color 0.1s ease, transform 0.08s ease, color 0.1s ease;
+}
+
+.retro-win-btn:hover {
+  background-color: #e5f1ff;
+  color: #10316b;
+}
+
+.retro-win-btn:active {
+  transform: translate(1px, 1px);
+  box-shadow: none;
+}
+
+.retro-win-btn-close:hover {
+  background-color: #ffb7c8;
+  color: #8c0f32;
+  border-color: #d13063;
+}
+
+/* Window Inner Body */
+.retro-window-body {
+  padding: 1.2rem 1.6rem 1.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.05rem;
+  box-sizing: border-box;
+}
+
+/* Night Mode Inversion for Retro Windows */
+body.theme-night .retro-window {
+  background: rgba(28, 43, 80, 0.96);
+  border-color: #5d8fda;
+  box-shadow: 0 10px 30px rgba(10, 18, 38, 0.6), 0 0 16px rgba(90, 133, 212, 0.2);
+}
+
+body.theme-night .retro-window-titlebar {
+  background: linear-gradient(90deg, #2a3d6f 0%, #1f2f58 100%);
+  border-bottom-color: #5d8fda;
+}
+
+body.theme-night .retro-titlebar-left {
+  color: #e0ecff;
+}
+
+body.theme-night .retro-win-btn {
+  background: #233664;
+  color: #e0ecff;
+  border-color: #5d8fda;
+  box-shadow: 1px 1px 0 rgba(0, 0, 0, 0.4);
+}
+
+body.theme-night .retro-win-btn:hover {
+  background-color: #334e8a;
+  color: #ffffff;
+}
+
+body.theme-night .retro-win-btn-close:hover {
+  background-color: #7a223f;
+  color: #ffd2de;
+  border-color: #ff7e9e;
+}
+
 .dream-window-header {
   display: flex;
   align-items: center;

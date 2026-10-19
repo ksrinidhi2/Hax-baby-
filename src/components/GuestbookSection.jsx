@@ -3,6 +3,7 @@ import './GuestbookSection.css';
 import headerPipImg from '../../assets/guestbook_header_pip.png';
 import visitorsOdometerImg from '../../assets/guestbook_visitors_odometer.png';
 import specialPipImg from '../../assets/guestbook_special_pip.png';
+import { useSite } from '../context/SiteContext';
 
 const ICON_BADGES = [
   { id: 'star', symbol: '⭐', label: 'Star' },
@@ -38,6 +39,7 @@ const INITIAL_WISHES = [
 ];
 
 export default function GuestbookSection() {
+  const { playSound } = useSite();
   const [wishes, setWishes] = useState(() => {
     try {
       const saved = localStorage.getItem('pip_dream_guestbook_wishes');
@@ -140,29 +142,71 @@ export default function GuestbookSection() {
   return (
     <section id="guestbook" className="guestbook-section" aria-label="Dream Guestbook">
       {/* 1. Main Dream Guestbook Window */}
-      <div className="guestbook-window">
-        {/* Header Bar */}
-        <div className="guestbook-window-header">
-          <div className="guestbook-header-left">
-            <div className="guestbook-title-row">
-              <span className="guestbook-envelope-icon" aria-hidden="true">💌</span>
-              <h2 className="guestbook-title">Dream Guestbook</h2>
-              <span className="guestbook-star-icon" aria-hidden="true">⭐</span>
-            </div>
-            <p className="guestbook-subtitle">
-              Leave a little wish, a kind message, or a dream for Pip!<br />
-              Your words become a part of the Midnight Nursery and help keep the stars shining.
-            </p>
+      <div className="guestbook-window retro-window">
+        {/* Retro Window Titlebar */}
+        <div className="retro-window-titlebar">
+          <div className="retro-titlebar-left">
+            <span className="retro-titlebar-icon" aria-hidden="true">✉️</span>
+            <span className="retro-titlebar-text">Guestbook (guestbook.exe)</span>
+            <span className="retro-titlebar-star" aria-hidden="true">⭐</span>
           </div>
-
-          <div className="guestbook-header-right">
-            <img
-              src={headerPipImg}
-              alt="Pip with bunny holding a letter on clouds: Every wish makes the night a little brighter!"
-              className="guestbook-header-pip-img"
-            />
+          <div className="retro-window-controls" aria-hidden="true">
+            <button
+              type="button"
+              className="retro-win-btn"
+              onClick={() => playSound && playSound('click')}
+              title="Minimize"
+              aria-label="Minimize Guestbook window"
+              tabIndex="-1"
+            >
+              —
+            </button>
+            <button
+              type="button"
+              className="retro-win-btn"
+              onClick={() => playSound && playSound('click')}
+              title="Maximize"
+              aria-label="Maximize Guestbook window"
+              tabIndex="-1"
+            >
+              □
+            </button>
+            <button
+              type="button"
+              className="retro-win-btn retro-win-btn-close"
+              onClick={() => playSound && playSound('click')}
+              title="Close"
+              aria-label="Close Guestbook window"
+              tabIndex="-1"
+            >
+              ✕
+            </button>
           </div>
         </div>
+
+        <div className="guestbook-window-body">
+          {/* Header Bar */}
+          <div className="guestbook-window-header">
+            <div className="guestbook-header-left">
+              <div className="guestbook-title-row">
+                <span className="guestbook-envelope-icon" aria-hidden="true">💌</span>
+                <h2 className="guestbook-title">Dream Guestbook</h2>
+                <span className="guestbook-star-icon" aria-hidden="true">⭐</span>
+              </div>
+              <p className="guestbook-subtitle">
+                Leave a little wish, a kind message, or a dream for Pip!<br />
+                Your words become a part of the Midnight Nursery and help keep the stars shining.
+              </p>
+            </div>
+
+            <div className="guestbook-header-right">
+              <img
+                src={headerPipImg}
+                alt="Pip with bunny holding a letter on clouds: Every wish makes the night a little brighter!"
+                className="guestbook-header-pip-img"
+              />
+            </div>
+          </div>
 
         {/* Main Two-Column Layout */}
         <div className="guestbook-main-layout">
@@ -349,6 +393,7 @@ export default function GuestbookSection() {
         {/* Inspirational Quote */}
         <div className="guestbook-inspirational-quote">
           “A kinder world begins with brighter dreams.”
+        </div>
         </div>
       </div>
     </section>

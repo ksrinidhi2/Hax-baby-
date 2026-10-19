@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './HomeSection.css';
-import pipHeroObservatory from '../../assets/pip_hero_observatory.png';
 import { useSite } from '../context/SiteContext';
 
 export default function HomeSection() {
@@ -164,46 +163,9 @@ export default function HomeSection() {
           </div>
         </div>
 
-        {/* Right Column: Pip & Observatory Castle Artwork (Separate Illustration Element) */}
-        <div className="hero-artwork-col">
-          <div
-            className={`hero-illustration-wrapper ${bowTickled ? 'bow-wiggle' : ''}`}
-            style={{
-              transform: prefersReducedMotion
-                ? 'none'
-                : `perspective(1000px) rotateY(${tilt.x}deg) rotateX(${tilt.y}deg) translate3d(${tilt.shiftX}px, ${tilt.shiftY}px, 0)`
-            }}
-          >
-            {/* Separate Speech Bubble Sticker */}
-            <div className="pip-speech-bubble-sticker" role="note" aria-label="Pip says: Hi! I'm Pip! Let's explore my world!">
-              <p className="bubble-text-title">Hi! I'm Pip!</p>
-              <p className="bubble-text-sub">
-                Let's explore my world! <span className="bubble-star" aria-hidden="true">⭐</span>
-              </p>
-            </div>
-
-            <img
-              src={pipHeroObservatory}
-              alt="Pip on a cloud holding a shining star beside the Midnight Nursery Observatory"
-              className="hero-illustration-img"
-            />
-
-            {/* Interactive Ticklish Bow Hotspot Target */}
-            <button
-              type="button"
-              className={`hero-bow-target ${bowTickled ? 'is-tickled' : ''}`}
-              onClick={triggerTickleBow}
-              aria-label="Pip's ticklish nightcap bow"
-              title="psst... Pip's bow is ticklish! (Click to tickle ✨)"
-            />
-
-            {/* Floating Tickle Bubble */}
-            {bowTickled && (
-              <div className="pip-hero-tickle-bubble" role="status" aria-live="polite">
-                <span>Teehee! Pip's bow is ticklish! ✨</span>
-              </div>
-            )}
-          </div>
+        {/* Right Column: Reserved for Pip character artwork */}
+        <div className="hero-artwork-col" aria-hidden="true">
+          <div className="hero-artwork-slot" />
         </div>
       </div>
 

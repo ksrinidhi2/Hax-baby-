@@ -202,13 +202,45 @@
 
 .nav-tool-sound {
   background: #ffffff;
-  color: var(--color-navy-dark);
+  color: #173b7d;
+  border: 1.5px solid #7aa7df;
+}
+
+.nav-tool-sound:hover {
+  background: #eef5fe;
+  border-color: #5a8fd9;
 }
 
 .nav-tool-sound.is-muted {
-  background: #f7d4dc;
-  border-color: var(--color-pink-deep);
-  color: var(--color-pink-deep);
+  background: #fde8ed;
+  border-color: #f472b6;
+  color: #be185d;
+}
+
+.nav-tool-sound.is-muted:hover {
+  background: #fbd5df;
+}
+
+/* Night Mode Styling for Sound Button */
+body.theme-night .nav-tool-sound {
+  background: #20355d;
+  color: #e0ecff;
+  border-color: #5d8fda;
+}
+
+body.theme-night .nav-tool-sound:hover {
+  background: #2a4477;
+  border-color: #8cb4f8;
+}
+
+body.theme-night .nav-tool-sound.is-muted {
+  background: #3b2238;
+  border-color: #f472b6;
+  color: #fca5a5;
+}
+
+body.theme-night .nav-tool-sound.is-muted:hover {
+  background: #4c2948;
 }
 
 .nav-tool-chaos {

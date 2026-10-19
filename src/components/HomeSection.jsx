@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './HomeSection.css';
+import pipHeroCloud from '../../assets/pip_hero_cloud_character.png';
 import { useSite } from '../context/SiteContext';
 
 export default function HomeSection() {
@@ -163,9 +164,14 @@ export default function HomeSection() {
           </div>
         </div>
 
-        {/* Right Column: Pip sticker area with cute retro pixel speech bubble */}
+        {/* Right Column: Pip character illustration beside speech bubble */}
         <div className="hero-artwork-col">
-          <div className="hero-sticker-stage">
+          <div
+            className="hero-character-composition"
+            style={{
+              transform: `perspective(1000px) rotateY(${tilt.x}deg) rotateX(${tilt.y}deg) translate3d(${tilt.shiftX}px, ${tilt.shiftY}px, 0)`
+            }}
+          >
             {/* Retro Pixel Speech Bubble Sticker */}
             <div
               className="pip-retro-speech-bubble"
@@ -185,8 +191,29 @@ export default function HomeSection() {
               <div className="bubble-pixel-tail" aria-hidden="true" />
             </div>
 
-            {/* Reserved slot for standalone transparent Pip-on-cloud asset */}
-            <div className="hero-pip-cloud-slot" aria-hidden="true" />
+            {/* Official Pip Sitting on Cloud Illustration */}
+            <div className="hero-pip-character-wrapper">
+              <img
+                src={pipHeroCloud}
+                alt="Pip the baby dream engineer sitting on a fluffy cloud waving hello with crescent moon and stars"
+                className="hero-pip-character-img"
+              />
+
+              {/* Interactive Tickle Bow Easter Egg */}
+              <button
+                type="button"
+                className={`hero-bow-target ${bowTickled ? 'is-tickled' : ''}`}
+                onClick={triggerTickleBow}
+                title="psst... Pip's pink bow is ticklish! (Click me ✨)"
+                aria-label="Tickle Pip's nightcap bow"
+              />
+
+              {bowTickled && (
+                <div className="pip-hero-tickle-bubble" role="status" aria-live="polite">
+                  <span>Teehee! That tickles! ✨👶</span>
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </div>

@@ -638,3 +638,127 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* ==========================================================================
+   Night Mode Styles for Nightlight Collection Experience
+   ========================================================================== */
+body.theme-night .nightlight-badge {
+  background: #3d2e14;
+  border-color: #eab308;
+  color: #fde047;
+}
+
+body.theme-night .nightlight-window {
+  background: rgba(28, 43, 80, 0.96);
+  border-color: #5d8fda;
+  box-shadow: 0 10px 30px rgba(10, 18, 38, 0.55), 0 0 20px rgba(90, 133, 212, 0.22);
+}
+
+body.theme-night .nightlight-header {
+  border-bottom-color: #3d588e;
+}
+
+body.theme-night .nightlight-title {
+  color: #e0ecff;
+}
+
+body.theme-night .nightlight-subtitle {
+  color: #b0cdfa;
+}
+
+body.theme-night .nightlight-reset-btn {
+  background: #233766;
+  color: #e0ecff;
+  border-color: #5d8fda;
+  box-shadow: 0 3px 0 #142340;
+}
+
+body.theme-night .nightlight-reset-btn:hover {
+  background: #2a4477;
+  color: #ffffff;
+}
+
+body.theme-night .control-group-panel {
+  background: #203159;
+  border-color: #43639e;
+}
+
+body.theme-night .power-switch-row {
+  border-bottom-color: #3d588e;
+}
+
+body.theme-night .control-heading {
+  color: #e0ecff;
+}
+
+body.theme-night .control-subtext {
+  color: #b0cdfa;
+}
+
+body.theme-night .slider-label {
+  color: #cbdcfc;
+}
+
+body.theme-night .slider-ticks-row {
+  color: #9cbfee;
+}
+
+body.theme-night .tone-picker-label {
+  color: #cbdcfc;
+}
+
+body.theme-night .tone-pill-btn {
+  background: #1c2a4f;
+  border-color: #385082;
+  color: #e0ecff;
+}
+
+body.theme-night .tone-pill-btn:hover:not(:disabled) {
+  background: #283c6e;
+}
+
+body.theme-night .tone-pill-btn.is-active {
+  background: #2d3856;
+  border-color: var(--tone-color);
+}
+
+body.theme-night .designs-selection-panel {
+  background: #203159;
+  border-color: #43639e;
+}
+
+body.theme-night .design-item-card {
+  background: #1c2a4f;
+  border-color: #385082;
+}
+
+body.theme-night .design-item-card:hover {
+  background: #283c6e;
+  border-color: #6490e6;
+}
+
+body.theme-night .design-item-card.is-selected {
+  background: #333a59;
+  border-color: #f59e0b;
+}
+
+body.theme-night .design-title {
+  color: #e0ecff;
+}
+
+body.theme-night .design-tagline {
+  color: #b0cdfa;
+}
+
+body.theme-night .selected-design-card {
+  background: #172442;
+  border-color: #3d588e;
+}
+
+body.theme-night .selected-card-title {
+  color: #93c5fd;
+}
+
+body.theme-night .selected-card-text {
+  color: #cbdcfc;
+}

@@ -317,7 +317,8 @@ export function SiteProvider({ children }) {
     isMiniGameOpen,
     openMiniGame,
     closeMiniGame,
-    playSoundEffect
+    playSoundEffect,
+    playSound: playSoundEffect
   };
 
   return <SiteContext.Provider value={value}>{children}</SiteContext.Provider>;

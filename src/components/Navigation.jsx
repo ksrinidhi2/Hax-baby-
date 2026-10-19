@@ -118,12 +118,14 @@ export default function Navigation() {
 
           <button
             type="button"
-            className={`nav-tool-btn nav-tool-sound ${isMuted ? 'is-muted' : ''}`}
+            className={`nav-tool-btn nav-tool-sound ${isMuted ? 'is-muted' : 'is-sound-on'}`}
             onClick={toggleMute}
-            title={isMuted ? 'Sound Muted (Click to unmute)' : 'Sound Active (Click to mute)'}
-            aria-label={isMuted ? 'Unmute sounds' : 'Mute sounds'}
+            title={isMuted ? 'Sound is Muted (Click to unmute)' : 'Sound is ON (Click to mute)'}
+            aria-label={isMuted ? 'Sound Muted. Click to turn sound on' : 'Sound ON. Click to mute sound'}
+            aria-pressed={!isMuted}
           >
-            <span>{isMuted ? '🔇' : '🔊'}</span> {isMuted ? 'Muted' : 'Sound'}
+            <span className="sound-btn-icon" aria-hidden="true">{isMuted ? '🔇' : '🔊'}</span>
+            <span className="sound-btn-label">{isMuted ? 'Muted' : 'Sound ON'}</span>
           </button>
 
           <button

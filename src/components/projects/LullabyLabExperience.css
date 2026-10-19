@@ -712,3 +712,161 @@
     grid-template-columns: repeat(4, 1fr);
   }
 }
+
+/* ==========================================================================
+   Night Mode Styles for Lullaby Lab Experience
+   ========================================================================== */
+body.theme-night .experience-back-btn {
+  background: #233766;
+  color: #e0ecff;
+  border-color: #5d8fda;
+  box-shadow: 0 4px 0 #142340;
+}
+
+body.theme-night .experience-back-btn:hover {
+  background: #2a4477;
+  border-color: #8cb4f8;
+}
+
+body.theme-night .experience-badge {
+  background: #3b2238;
+  border-color: #f472b6;
+  color: #fca5a5;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+body.theme-night .lullaby-window {
+  background: rgba(28, 43, 80, 0.96);
+  border-color: #5d8fda;
+  box-shadow: 0 10px 30px rgba(10, 18, 38, 0.55), 0 0 20px rgba(90, 133, 212, 0.22);
+}
+
+body.theme-night .lullaby-header {
+  border-bottom-color: #3d588e;
+}
+
+body.theme-night .lullaby-title {
+  color: #e0ecff;
+}
+
+body.theme-night .lullaby-subtitle {
+  color: #b0cdfa;
+}
+
+body.theme-night .lullaby-player-card {
+  background: linear-gradient(135deg, #203159 0%, #1c2a4f 100%);
+  border-color: #4f73b5;
+  box-shadow: 0 6px 20px rgba(10, 18, 38, 0.4);
+}
+
+body.theme-night .track-meta-title {
+  color: #ffffff;
+}
+
+body.theme-night .track-meta-mood {
+  color: #fca5a5;
+}
+
+body.theme-night .track-meta-desc {
+  color: #cbdcfc;
+}
+
+body.theme-night .audio-visualizer-container {
+  background: #172442;
+  border-color: #3d588e;
+}
+
+body.theme-night .scrubber-time {
+  color: #9cbfee;
+}
+
+body.theme-night .scrubber-track {
+  background: #172442;
+}
+
+body.theme-night .volume-control-panel {
+  background: #172442;
+  border-color: #3d588e;
+}
+
+body.theme-night .volume-label {
+  color: #cbdcfc;
+}
+
+body.theme-night .transport-btn-stop {
+  background: #273d74;
+  color: #e0ecff;
+  border-color: #4f73b5;
+  box-shadow: 0 4px 0 #1b2848;
+}
+
+body.theme-night .transport-btn-stop:hover:not(:disabled) {
+  background: #334e8a;
+}
+
+body.theme-night .playlist-panel {
+  background: #203159;
+  border-color: #43639e;
+}
+
+body.theme-night .playlist-heading {
+  color: #e0ecff;
+}
+
+body.theme-night .playlist-item-btn {
+  background: #1c2a4f;
+  border-color: #385082;
+}
+
+body.theme-night .playlist-item-btn:hover {
+  background: #283c6e;
+  border-color: #6490e6;
+}
+
+body.theme-night .playlist-item-btn.is-selected {
+  background: #2c427c;
+  border-color: #729ded;
+}
+
+body.theme-night .track-list-name {
+  color: #e0ecff;
+}
+
+body.theme-night .track-list-desc {
+  color: #cbdcfc;
+}
+
+body.theme-night .duration-pill {
+  background: #172442;
+  color: #9cbfee;
+  border-color: #3d588e;
+}
+
+body.theme-night .interactive-bells-card {
+  background: linear-gradient(135deg, #272c54 0%, #203159 100%);
+  border-color: #eab308;
+}
+
+body.theme-night .bells-title {
+  color: #fde047;
+}
+
+body.theme-night .bells-desc {
+  color: #cbdcfc;
+}
+
+body.theme-night .bell-key {
+  background: #1c2a4f;
+}
+
+body.theme-night .bell-key:hover {
+  background: #273d74;
+}
+
+body.theme-night .bell-note-name {
+  color: #ffffff;
+}
+
+body.theme-night .bell-solfege {
+  color: #cbdcfc;
+}

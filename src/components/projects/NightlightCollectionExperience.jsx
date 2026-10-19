@@ -4,6 +4,8 @@ import starJarImg from '../../../assets/project_nightlight_collection.png';
 import lanternImg from '../../../assets/pip_dream_lantern.png';
 import cloudFriendImg from '../../../assets/pip_avatar_cloud.png';
 
+import { useSite } from '../../context/SiteContext';
+
 const NIGHTLIGHT_DESIGNS = [
   {
     id: 'star-jar',
@@ -70,6 +72,7 @@ const GLOW_TONES = [
 ];
 
 export default function NightlightCollectionExperience({ onBack }) {
+  const { isMuted } = useSite();
   const [selectedDesignId, setSelectedDesignId] = useState('star-jar');
   const [isPoweredOn, setIsPoweredOn] = useState(true);
   const [glowIntensity, setGlowIntensity] = useState(75);
@@ -82,6 +85,7 @@ export default function NightlightCollectionExperience({ onBack }) {
 
   // Play gentle soft chime on switch or toggle
   const playClickSound = (high = false) => {
+    if (isMuted) return;
     try {
       const AudioCtx = window.AudioContext || window.webkitAudioContext;
       if (!AudioCtx) return;

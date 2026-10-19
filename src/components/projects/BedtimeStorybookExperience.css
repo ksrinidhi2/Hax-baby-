@@ -766,3 +766,208 @@
     justify-content: center;
   }
 }
+
+/* ==========================================================================
+   Night Mode Styles for Bedtime Storybook Experience
+   ========================================================================== */
+body.theme-night .storybook-badge {
+  background: #3b2238;
+  border-color: #f472b6;
+  color: #fca5a5;
+}
+
+body.theme-night .storybook-window {
+  background: rgba(28, 43, 80, 0.96);
+  border-color: #5d8fda;
+  box-shadow: 0 10px 30px rgba(10, 18, 38, 0.55), 0 0 20px rgba(90, 133, 212, 0.22);
+}
+
+body.theme-night .storybook-header {
+  border-bottom-color: #3d588e;
+}
+
+body.theme-night .storybook-title {
+  color: #e0ecff;
+}
+
+body.theme-night .storybook-subtitle {
+  color: #b0cdfa;
+}
+
+/* Chapter Select Cards in Night Mode */
+body.theme-night .chapter-select-card {
+  background: #203159;
+  border-color: #43639e;
+  box-shadow: 0 4px 14px rgba(10, 18, 38, 0.4);
+}
+
+body.theme-night .chapter-select-card:hover {
+  background: #283c6e;
+  border-color: #6490e6;
+}
+
+body.theme-night .chapter-card-thumbnail-wrapper {
+  background: #172442;
+}
+
+body.theme-night .chapter-number-pill {
+  background: #1c2a4f;
+  border-color: #3d588e;
+  color: #9cbfee;
+}
+
+body.theme-night .chapter-card-title {
+  color: #ffffff;
+}
+
+body.theme-night .chapter-card-subtitle {
+  color: #fca5a5;
+}
+
+body.theme-night .chapter-card-preview {
+  color: #cbdcfc;
+}
+
+body.theme-night .chapter-open-btn {
+  background: #273d74;
+  color: #e0ecff;
+  border-color: #5d8fda;
+}
+
+body.theme-night .chapter-select-card:hover .chapter-open-btn {
+  background: #334e8a;
+  color: #ffffff;
+}
+
+/* Book Reading Spread in Night Mode */
+body.theme-night .book-top-navigation,
+body.theme-night .book-bottom-navigation {
+  background: #203159;
+  border-color: #43639e;
+}
+
+body.theme-night .book-back-chapters-btn {
+  background: #1c2a4f;
+  color: #e0ecff;
+  border-color: #3d588e;
+  box-shadow: 0 2px 0 #142340;
+}
+
+body.theme-night .book-back-chapters-btn:hover {
+  background: #283c6e;
+}
+
+body.theme-night .progress-chapter-label {
+  color: #e0ecff;
+}
+
+body.theme-night .book-progress-bar {
+  background: #172442;
+}
+
+body.theme-night .progress-percentage {
+  color: #9cbfee;
+}
+
+body.theme-night .current-story-indicator {
+  color: #e0ecff;
+}
+
+body.theme-night .book-prev-btn {
+  background: #1c2a4f;
+  color: #e0ecff;
+  border-color: #3d588e;
+  box-shadow: 0 3px 0 #142340;
+}
+
+body.theme-night .book-prev-btn:hover:not(:disabled) {
+  background: #283c6e;
+}
+
+body.theme-night .open-book-spread {
+  background: #1c2a4f;
+  border-color: #5d8fda;
+  box-shadow: 0 12px 35px rgba(10, 18, 38, 0.6), inset 0 0 40px rgba(15, 23, 42, 0.4);
+}
+
+body.theme-night .book-page-left {
+  background: radial-gradient(circle at 80% 50%, #203159 0%, #1c2a4f 100%);
+  border-right-color: #385082;
+}
+
+body.theme-night .book-page-right {
+  background: radial-gradient(circle at 20% 50%, #223565 0%, #1c2a4f 100%);
+}
+
+body.theme-night .page-header-ribbon,
+body.theme-night .story-content-header {
+  border-bottom-color: #385082;
+}
+
+body.theme-night .page-chapter-tag {
+  color: #fca5a5;
+}
+
+body.theme-night .page-quote-card {
+  background: #172442;
+  border-color: #3d588e;
+}
+
+body.theme-night .page-quote-text {
+  color: #ffd66b;
+}
+
+body.theme-night .story-heading {
+  color: #ffffff;
+}
+
+body.theme-night .story-subheading {
+  color: #fca5a5;
+}
+
+body.theme-night .story-paragraph {
+  color: #cbdcfc;
+}
+
+body.theme-night .story-paragraph.first-paragraph::first-letter {
+  color: #ffd66b;
+}
+
+body.theme-night .page-number-footer {
+  color: #9cbfee;
+}
+
+/* Ending Plaque in Night Mode */
+body.theme-night .ending-plaque-card {
+  background: radial-gradient(circle at 50% 20%, #203159 0%, #1a2748 100%);
+  border-color: #5d8fda;
+  box-shadow: 0 14px 40px rgba(10, 18, 38, 0.6);
+}
+
+body.theme-night .ending-avatar-bubble {
+  background: #172442;
+  border-color: #5d8fda;
+}
+
+body.theme-night .ending-title {
+  color: #ffffff;
+}
+
+body.theme-night .ending-message {
+  color: #cbdcfc;
+}
+
+body.theme-night .ending-blessing {
+  color: #ffd66b;
+}
+
+body.theme-night .ending-projects-btn {
+  background: #233766;
+  color: #e0ecff;
+  border-color: #5d8fda;
+  box-shadow: 0 3px 0 #142340;
+}
+
+body.theme-night .ending-projects-btn:hover {
+  background: #2a4477;
+}

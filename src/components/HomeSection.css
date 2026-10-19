@@ -13,12 +13,11 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /* Soft pastel sky-blue gradient scoped exclusively to Home */
-  background: linear-gradient(180deg, #8dc3fb 0%, #b4dbfd 45%, #daf0fe 82%, rgba(218, 240, 254, 0.6) 100%);
+  /* Completely transparent so the continuous dream-world background shines through with zero haze */
+  background: transparent !important;
   scroll-margin-top: 0;
   z-index: 1;
   padding: calc(var(--nav-height, 70px) + 2rem) 1.5rem 3.5rem 1.5rem;
-  transition: background 0.4s ease;
 }
 
 /* Screen reader only utility */
@@ -257,11 +256,12 @@
 .hero-tagline {
   font-family: var(--font-body);
   font-size: clamp(1.1rem, 2vw, 1.45rem);
-  font-weight: 500;
-  color: #264275;
+  font-weight: 600;
+  color: #1a2f58;
   line-height: 1.5;
   margin-bottom: 2.2rem;
   max-width: 500px;
+  text-shadow: 0 1px 8px rgba(255, 255, 255, 0.9), 0 0 2px rgba(255, 255, 255, 0.8);
 }
 
 .tagline-star {
@@ -531,7 +531,7 @@
    ========================================================================== */
 
 body.theme-night .hero-section {
-  background: linear-gradient(180deg, #1a284c 0%, #233664 45%, #2d4278 82%, rgba(45, 66, 120, 0.5) 100%) !important;
+  background: transparent !important;
 }
 
 body.theme-night .hero-visitor-pill {

@@ -88,14 +88,12 @@ export default function HomeSection() {
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
     >
-      {/* Decorative Atmosphere Elements (Pastel clouds & celestial sparkles) */}
+      {/* Decorative Atmosphere Elements (Twinkling celestial sparkles) */}
       <div className="hero-atmosphere" aria-hidden="true">
         <span className="hero-star star-1">✦</span>
         <span className="hero-star star-2">⭐</span>
         <span className="hero-star star-3">✧</span>
         <span className="hero-star star-4">⋆</span>
-        <span className="hero-cloud-puff puff-1">☁️</span>
-        <span className="hero-cloud-puff puff-2">☁️</span>
       </div>
 
       {/* Floating Returning Visitor Greeting Pill */}

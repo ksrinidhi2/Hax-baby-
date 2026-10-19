@@ -2,6 +2,20 @@ import React, { useEffect, useState, useRef } from 'react';
 import './CursorEffects.css';
 import { useSite } from '../context/SiteContext';
 
+// Balanced mix of pastel pink, lavender, sky blue, mint green, soft gold, and occasional peach
+const PASTEL_PALETTE = [
+  { color: '#ff9ec6', glow: 'rgba(255, 158, 198, 0.95)' }, // Pastel Pink
+  { color: '#cda6ff', glow: 'rgba(205, 166, 255, 0.95)' }, // Lavender
+  { color: '#7cd4ff', glow: 'rgba(124, 212, 255, 0.95)' }, // Sky Blue
+  { color: '#88ecc4', glow: 'rgba(136, 236, 196, 0.95)' }, // Mint Green
+  { color: '#ffd66b', glow: 'rgba(255, 214, 107, 0.95)' }, // Soft Gold
+  { color: '#ffbe99', glow: 'rgba(255, 190, 153, 0.95)' }, // Occasional Peach
+  { color: '#ffa8d8', glow: 'rgba(255, 168, 216, 0.95)' }, // Baby Rose Pink
+  { color: '#a8d8ff', glow: 'rgba(168, 216, 255, 0.95)' }, // Powder Blue
+  { color: '#dfb8ff', glow: 'rgba(223, 184, 255, 0.95)' }, // Soft Lilac
+  { color: '#ffe27d', glow: 'rgba(255, 226, 125, 0.95)' }  // Warm Butter Gold
+];
+
 export default function CursorEffects() {
   const { sparklesActive, nightlightCursor, theme } = useSite();
   const [pos, setPos] = useState({ x: -1000, y: -1000 });
@@ -44,8 +58,10 @@ export default function CursorEffects() {
           const offsetX = (Math.random() - 0.5) * 20;
           const offsetY = (Math.random() - 0.5) * 20;
           const rotation = Math.floor(Math.random() * 360);
-          const colorVariants = ['#ffc837', '#ffd66b', '#ffb5cb', '#c4e2ff', '#ffffff', '#ffe785'];
-          const color = colorVariants[Math.floor(Math.random() * colorVariants.length)];
+
+          // Sequentially cycle through the pastel rainbow for smooth gradient variation
+          const paletteIndex = sparkleIdCounterRef.current % PASTEL_PALETTE.length;
+          const pickedPalette = PASTEL_PALETTE[paletteIndex];
 
           const newSparkle = {
             id: ++sparkleIdCounterRef.current,
@@ -54,7 +70,8 @@ export default function CursorEffects() {
             symbol,
             size,
             rotation,
-            color
+            color: pickedPalette.color,
+            glow: pickedPalette.glow
           };
 
           setSparkles((prev) => {
@@ -99,7 +116,7 @@ export default function CursorEffects() {
         />
       )}
 
-      {/* 2. Sparkle Cursor Trail */}
+      {/* 2. Sparkle Cursor Trail - Pastel Pink, Lavender, Sky Blue, Mint, Gold, Peach */}
       {sparklesActive &&
         sparkles.map((sp) => (
           <span
@@ -110,6 +127,7 @@ export default function CursorEffects() {
               top: `${sp.y}px`,
               fontSize: `${sp.size}px`,
               color: sp.color,
+              textShadow: `0 0 6px ${sp.glow}, 0 0 12px rgba(255, 255, 255, 0.95)`,
               transform: `translate(-50%, -50%) rotate(${sp.rotation}deg)`
             }}
           >

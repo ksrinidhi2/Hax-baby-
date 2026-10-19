@@ -347,79 +347,136 @@
   font-size: 1.15rem;
 }
 
-/* Right Column: Reserved for Pip Artwork */
+/* Right Column: Pip Sticker & Speech Bubble Area */
 .hero-artwork-col {
   flex: 1;
-  max-width: 540px;
+  max-width: 480px;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
   z-index: 2;
-  min-height: 200px;
+  min-height: 240px;
 }
 
-.hero-artwork-slot {
-  width: 100%;
-  max-width: 480px;
-  min-height: 180px;
-  pointer-events: none;
-}
-
-.hero-illustration-wrapper {
+.hero-sticker-stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   position: relative;
   width: 100%;
-  max-width: 580px;
-  transform-style: preserve-3d;
-  transition: transform 0.18s ease-out;
-  will-change: transform;
+  max-width: 360px;
 }
 
-/* Separate Interactive Speech Bubble Sticker */
-.pip-speech-bubble-sticker {
-  position: absolute;
-  top: 13%;
-  left: 22%;
+/* Cute Retro Pixel Speech Bubble Sticker */
+.pip-retro-speech-bubble {
+  position: relative;
   background: #ffffff;
-  border: 3px solid #1c3d7a;
-  border-radius: 18px;
-  padding: 0.6rem 1.15rem;
-  box-shadow: 0 4px 0 #122854, 0 6px 16px rgba(28, 61, 122, 0.18);
-  z-index: 25;
+  border: 2px solid #5a8fd9;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(36, 62, 116, 0.14), 0 2px 6px rgba(36, 62, 116, 0.08);
+  overflow: visible;
   user-select: none;
-  pointer-events: auto;
-  text-align: center;
-  animation: speech-sticker-bob 3.2s ease-in-out infinite alternate;
+  width: 100%;
+  max-width: 310px;
+  animation: pip-bubble-float 3.5s ease-in-out infinite alternate;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.pip-speech-bubble-sticker::after {
-  content: '';
+.pip-retro-speech-bubble:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 12px 28px rgba(36, 62, 116, 0.18);
+}
+
+.bubble-pixel-titlebar {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: linear-gradient(90deg, #d2e4fc 0%, #bddbfa 100%);
+  border-bottom: 2px solid #5a8fd9;
+  padding: 0.3rem 0.65rem;
+  border-radius: 10px 10px 0 0;
+  font-family: var(--font-heading);
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #173b7d;
+}
+
+.bubble-pixel-icon {
+  font-size: 0.95rem;
+}
+
+.bubble-pixel-title {
+  flex: 1;
+}
+
+.bubble-pixel-star {
+  font-size: 0.85rem;
+  color: #ffb703;
+}
+
+.bubble-pixel-body {
+  padding: 0.85rem 1.05rem 0.95rem;
+}
+
+.bubble-text-msg {
+  font-family: var(--font-heading);
+  font-size: 1.08rem;
+  font-weight: 600;
+  color: #173b7d;
+  line-height: 1.45;
+  margin: 0;
+  text-align: center;
+}
+
+/* Cute Retro Speech Tail */
+.bubble-pixel-tail {
   position: absolute;
   bottom: -11px;
-  left: 32px;
+  left: 48px;
   width: 0;
   height: 0;
   border-left: 10px solid transparent;
   border-right: 10px solid transparent;
-  border-top: 11px solid #1c3d7a;
+  border-top: 11px solid #5a8fd9;
 }
 
-.pip-speech-bubble-sticker::before {
+.bubble-pixel-tail::after {
   content: '';
   position: absolute;
-  bottom: -7px;
-  left: 34px;
+  bottom: 2px;
+  left: -8px;
   width: 0;
   height: 0;
   border-left: 8px solid transparent;
   border-right: 8px solid transparent;
-  border-top: 8px solid #ffffff;
-  z-index: 1;
+  border-top: 9px solid #ffffff;
 }
 
-@keyframes speech-sticker-bob {
-  0% { transform: translateY(0); }
-  100% { transform: translateY(-4px); }
+/* Reserved Slot for Transparent Pip-on-Cloud Asset */
+.hero-pip-cloud-slot {
+  width: 100%;
+  max-width: 260px;
+  min-height: 80px;
+  pointer-events: none;
+}
+
+@keyframes pip-bubble-float {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(0.8deg);
+  }
+  100% {
+    transform: translateY(4px) rotate(-0.8deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pip-retro-speech-bubble {
+    animation: none !important;
+  }
 }
 
 .bubble-text-title {
@@ -658,18 +715,28 @@ body.theme-night .hero-illustration-wrapper {
   filter: none;
 }
 
-body.theme-night .pip-speech-bubble-sticker {
-  background: #1c2e5a;
+body.theme-night .pip-retro-speech-bubble {
+  background: rgba(28, 43, 80, 0.96);
   border-color: #5d8fda;
-  box-shadow: 0 4px 0 #0d172e, 0 6px 20px rgba(0, 0, 0, 0.45);
+  box-shadow: 0 8px 24px rgba(10, 18, 38, 0.6), 0 0 16px rgba(90, 133, 212, 0.2);
 }
 
-body.theme-night .pip-speech-bubble-sticker::after {
+body.theme-night .bubble-pixel-titlebar {
+  background: linear-gradient(90deg, #2a3d6f 0%, #1f2f58 100%);
+  border-bottom-color: #5d8fda;
+  color: #e0ecff;
+}
+
+body.theme-night .bubble-text-msg {
+  color: #e0ecff;
+}
+
+body.theme-night .bubble-pixel-tail {
   border-top-color: #5d8fda;
 }
 
-body.theme-night .pip-speech-bubble-sticker::before {
-  border-top-color: #1c2e5a;
+body.theme-night .bubble-pixel-tail::after {
+  border-top-color: rgba(28, 43, 80, 0.96);
 }
 
 body.theme-night .bubble-text-title,
@@ -697,7 +764,7 @@ body.theme-night .scroll-label {
   .hero-main-container {
     flex-direction: column-reverse;
     text-align: center;
-    gap: 2rem;
+    gap: 1.5rem;
     padding-top: 1rem;
   }
 
@@ -720,7 +787,11 @@ body.theme-night .scroll-label {
   }
 
   .hero-artwork-col {
-    display: none;
+    display: flex;
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto;
+    min-height: auto;
   }
 }
 

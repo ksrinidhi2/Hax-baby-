@@ -280,6 +280,25 @@
   border-bottom: 1.5px dashed #dae7f8;
 }
 
+/* Reading Progress Track & Fill */
+.story-progress-bar-track {
+  width: 100%;
+  height: 6px;
+  background: #e8f1fc;
+  border-radius: 999px;
+  overflow: hidden;
+  margin-top: -0.35rem;
+  margin-bottom: 0.2rem;
+  border: 1px solid #cce1fa;
+}
+
+.story-progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #ff8aa5 0%, #ff527b 100%);
+  border-radius: 999px;
+  transition: width 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 .story-panel-header-left {
   display: flex;
   align-items: center;
@@ -607,4 +626,13 @@ body.theme-night .story-reading-header {
 
 body.theme-night .story-panel-footer {
   border-top-color: #3d588e;
+}
+
+body.theme-night .story-progress-bar-track {
+  background: #1b2848;
+  border-color: #3d588e;
+}
+
+body.theme-night .story-progress-bar-fill {
+  background: linear-gradient(90deg, #db4b71 0%, #ff7e9e 100%);
 }

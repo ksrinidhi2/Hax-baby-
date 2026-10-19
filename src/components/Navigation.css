@@ -212,19 +212,45 @@
 }
 
 .nav-tool-chaos {
-  background: var(--color-pink-primary);
-  color: #ffffff;
+  background: #ffffff;
+  color: var(--color-navy-dark);
+  border: 1.5px solid var(--color-navy-border);
+}
+
+.nav-tool-chaos:hover {
+  background: #fff0f5;
+  border-color: #ff4d79;
 }
 
 .nav-tool-chaos.is-active {
-  background: #ff4d79;
-  box-shadow: 0 0 12px rgba(255, 77, 121, 0.6);
-  animation: chaos-pulse 1s infinite alternate;
+  background: linear-gradient(135deg, #ff4d79 0%, #db2777 100%);
+  color: #ffffff;
+  border-color: #be185d;
+  box-shadow: 0 0 14px rgba(255, 77, 121, 0.65), 0 2px 4px rgba(0, 0, 0, 0.2);
+  animation: chaos-pulse 1.2s infinite ease-in-out alternate;
+}
+
+body.theme-night .nav-tool-chaos {
+  background: #233766;
+  color: #e0ecff;
+  border-color: #5d8fda;
+}
+
+body.theme-night .nav-tool-chaos:hover {
+  background: #31467e;
+  border-color: #ff7e9e;
+}
+
+body.theme-night .nav-tool-chaos.is-active {
+  background: linear-gradient(135deg, #ff4d79 0%, #ec4899 100%);
+  color: #ffffff;
+  border-color: #f472b6;
+  box-shadow: 0 0 16px rgba(255, 77, 121, 0.75);
 }
 
 @keyframes chaos-pulse {
   from { transform: scale(1); }
-  to { transform: scale(1.06); }
+  to { transform: scale(1.05); }
 }
 
 .nav-tool-star {

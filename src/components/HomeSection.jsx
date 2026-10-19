@@ -163,9 +163,31 @@ export default function HomeSection() {
           </div>
         </div>
 
-        {/* Right Column: Reserved for Pip character artwork */}
-        <div className="hero-artwork-col" aria-hidden="true">
-          <div className="hero-artwork-slot" />
+        {/* Right Column: Pip sticker area with cute retro pixel speech bubble */}
+        <div className="hero-artwork-col">
+          <div className="hero-sticker-stage">
+            {/* Retro Pixel Speech Bubble Sticker */}
+            <div
+              className="pip-retro-speech-bubble"
+              role="note"
+              aria-label="Pip says: Hi, little dreamer! Ready to explore my world?"
+            >
+              <div className="bubble-pixel-titlebar">
+                <span className="bubble-pixel-icon" aria-hidden="true">☁️</span>
+                <span className="bubble-pixel-title">Pip says...</span>
+                <span className="bubble-pixel-star" aria-hidden="true">✨</span>
+              </div>
+              <div className="bubble-pixel-body">
+                <p className="bubble-text-msg">
+                  “Hi, little dreamer! ✨ Ready to explore my world? 🌙”
+                </p>
+              </div>
+              <div className="bubble-pixel-tail" aria-hidden="true" />
+            </div>
+
+            {/* Reserved slot for standalone transparent Pip-on-cloud asset */}
+            <div className="hero-pip-cloud-slot" aria-hidden="true" />
+          </div>
         </div>
       </div>
 

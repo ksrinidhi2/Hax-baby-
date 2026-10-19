@@ -130,11 +130,12 @@ export default function Navigation() {
             type="button"
             className={`nav-tool-btn nav-tool-chaos ${isChaosMode ? 'is-active' : ''}`}
             onClick={toggleChaosMode}
-            title={isChaosMode ? 'Chaos Mode ON (Click to calm down)' : 'Chaos Mode (Click to unleash playful dream chaos)'}
-            aria-label="Toggle playful chaos mode"
+            title={isChaosMode ? 'Chaos Mode is ON (Click to turn OFF)' : 'Chaos Mode is OFF (Click to turn ON)'}
+            aria-label={`Chaos Mode is currently ${isChaosMode ? 'ON' : 'OFF'}. Click to toggle.`}
             aria-pressed={isChaosMode}
           >
-            <span>🎮</span> {isChaosMode ? 'Calm' : 'Chaos'}
+            <span className="chaos-btn-icon" aria-hidden="true">{isChaosMode ? '✨' : '🎮'}</span>
+            <span className="chaos-btn-label">{isChaosMode ? 'Chaos: ON' : 'Chaos: OFF'}</span>
           </button>
 
           <button

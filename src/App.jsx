@@ -9,14 +9,18 @@ import GuestbookSection from './components/GuestbookSection';
 import FooterCredits from './components/FooterCredits';
 import CursorEffects from './components/CursorEffects';
 import StarCatchMiniGame from './components/StarCatchMiniGame';
+import ChaosDecorations from './components/ChaosDecorations';
 
 function AppContent() {
-  const { isMiniGameOpen, closeMiniGame } = useSite();
+  const { isMiniGameOpen, closeMiniGame, isChaosMode } = useSite();
 
   return (
     <div className="site-wrapper">
       {/* Global Cursor Effects: Nightlight Aura & Sparkle Trail */}
       <CursorEffects />
+
+      {/* Chaos Mode Floating Pastel Stars Layer */}
+      {isChaosMode && <ChaosDecorations />}
 
       {/* Main Top Navigation */}
       <Navigation />

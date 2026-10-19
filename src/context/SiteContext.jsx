@@ -201,22 +201,23 @@ export function SiteProvider({ children }) {
           osc.stop(now + idx * 0.07 + 0.36);
         });
       } else if (type === 'chaos') {
-        // Whimsical bounce sound
-        const osc = ctx.createOscillator();
-        const gain = ctx.createGain();
-        osc.type = 'triangle';
-        osc.frequency.setValueAtTime(392.00, now);
-        osc.frequency.exponentialRampToValueAtTime(783.99, now + 0.12);
-        osc.frequency.exponentialRampToValueAtTime(523.25, now + 0.25);
+        // Whimsical playful chime arpeggio: G4, C5, E5, G5, C6
+        const freqs = [392.00, 523.25, 659.25, 783.99, 1046.50];
+        freqs.forEach((freq, idx) => {
+          const osc = ctx.createOscillator();
+          const gain = ctx.createGain();
+          osc.type = 'triangle';
+          osc.frequency.setValueAtTime(freq, now + idx * 0.05);
 
-        gain.gain.setValueAtTime(0.001, now);
-        gain.gain.linearRampToValueAtTime(0.15, now + 0.02);
-        gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.25);
+          gain.gain.setValueAtTime(0.001, now + idx * 0.05);
+          gain.gain.linearRampToValueAtTime(0.12, now + idx * 0.05 + 0.015);
+          gain.gain.exponentialRampToValueAtTime(0.0001, now + idx * 0.05 + 0.22);
 
-        osc.connect(gain);
-        gain.connect(ctx.destination);
-        osc.start(now);
-        osc.stop(now + 0.25);
+          osc.connect(gain);
+          gain.connect(ctx.destination);
+          osc.start(now + idx * 0.05);
+          osc.stop(now + idx * 0.05 + 0.23);
+        });
       }
     } catch {
       // Audio not permitted or supported

@@ -68,69 +68,35 @@ const CHAPTERS_DATA = [
 export default function StorySection() {
   const [activeChapterIndex, setActiveChapterIndex] = useState(0);
   const { playSound } = useSite();
-  const isManualNavRef = React.useRef(false);
-  const manualTimerRef = React.useRef(null);
 
-  // Scroll-driven chapter advancement
-  React.useEffect(() => {
-    const sectionEl = document.getElementById('story');
-    if (!sectionEl) return;
-
-    const handleScroll = () => {
-      if (isManualNavRef.current) return;
-
-      const rect = sectionEl.getBoundingClientRect();
-      const windowHeight = window.innerHeight;
-
-      // When the story window is prominently in viewport
-      if (rect.top <= windowHeight * 0.55 && rect.bottom >= windowHeight * 0.45) {
-        const totalDistance = rect.height;
-        const scrolledDistance = (windowHeight * 0.55) - rect.top;
-        const progress = Math.max(0, Math.min(0.999, scrolledDistance / totalDistance));
-
-        const targetChapter = Math.floor(progress * CHAPTERS_DATA.length);
-        setActiveChapterIndex((prev) => (prev !== targetChapter ? targetChapter : prev));
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-      if (manualTimerRef.current) clearTimeout(manualTimerRef.current);
-    };
-  }, []);
-
-  const currentChapter = CHAPTERS_DATA[activeChapterIndex];
+  const currentChapter = CHAPTERS_DATA[activeChapterIndex] || CHAPTERS_DATA[0];
   const isFirstChapter = activeChapterIndex === 0;
   const isLastChapter = activeChapterIndex === CHAPTERS_DATA.length - 1;
 
-  const triggerManualNav = (newIndex) => {
-    isManualNavRef.current = true;
-    setActiveChapterIndex(newIndex);
-    if (manualTimerRef.current) clearTimeout(manualTimerRef.current);
-    manualTimerRef.current = setTimeout(() => {
-      isManualNavRef.current = false;
-    }, 1500);
+  const handleSelectChapter = (idx) => {
+    if (idx >= 0 && idx < CHAPTERS_DATA.length) {
+      setActiveChapterIndex(idx);
+      if (playSound) playSound('click');
+    }
   };
 
   const goToPrev = () => {
-    if (!isFirstChapter) {
-      triggerManualNav(activeChapterIndex - 1);
+    if (activeChapterIndex > 0) {
+      setActiveChapterIndex((prev) => prev - 1);
+      if (playSound) playSound('click');
     }
   };
 
   const goToNext = () => {
-    if (!isLastChapter) {
-      triggerManualNav(activeChapterIndex + 1);
+    if (activeChapterIndex < CHAPTERS_DATA.length - 1) {
+      setActiveChapterIndex((prev) => prev + 1);
+      if (playSound) playSound('click');
     }
   };
 
-  const handleSelectChapter = (idx) => {
-    triggerManualNav(idx);
-  };
-
   const handleFinalAction = () => {
-    // Scroll smoothly to guestbook or loop back
+    if (playSound) playSound('click');
+    // Scroll smoothly to guestbook
     const guestbookEl = document.getElementById('guestbook');
     if (guestbookEl) {
       guestbookEl.scrollIntoView({ behavior: 'smooth' });
@@ -275,6 +241,21 @@ export default function StorySection() {
                   </button>
                 </div>
               </div>
+            </div>
+
+            {/* Reading Progress Indicator */}
+            <div
+              className="story-progress-bar-track"
+              role="progressbar"
+              aria-valuenow={activeChapterIndex + 1}
+              aria-valuemin="1"
+              aria-valuemax={CHAPTERS_DATA.length}
+              aria-label={`Chapter ${activeChapterIndex + 1} of ${CHAPTERS_DATA.length}`}
+            >
+              <div
+                className="story-progress-bar-fill"
+                style={{ width: `${((activeChapterIndex + 1) / CHAPTERS_DATA.length) * 100}%` }}
+              />
             </div>
 
             {/* Inner Content: Left Illustration + Right Story Prose & Navigation Button */}

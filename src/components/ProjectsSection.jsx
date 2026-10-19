@@ -93,38 +93,44 @@ export default function ProjectsSection() {
   const { playSound } = useSite();
 
   const handleOpenProject = (id) => {
+    if (playSound) playSound('click');
     setActiveProject(id);
-    const element = document.getElementById('projects');
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
+    window.requestAnimationFrame(() => {
+      const element = document.getElementById('projects');
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
   };
 
   const handleBackToProjects = () => {
+    if (playSound) playSound('click');
     setActiveProject(null);
-    const element = document.getElementById('projects');
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
+    window.requestAnimationFrame(() => {
+      const element = document.getElementById('projects');
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
   };
 
   return (
     <section id="projects" className="projects-section" aria-label="Projects">
       {/* If a Project is selected, render its full-page experience */}
       {activeProject === 'lullaby-lab' && (
-        <LullabyLabExperience onBack={handleBackToProjects} />
+        <LullabyLabExperience key="lullaby-lab" onBack={handleBackToProjects} />
       )}
 
       {activeProject === 'nightlight-collection' && (
-        <NightlightCollectionExperience onBack={handleBackToProjects} />
+        <NightlightCollectionExperience key="nightlight-collection" onBack={handleBackToProjects} />
       )}
 
       {activeProject === 'dream-delivery-routes' && (
-        <DreamDeliveryRoutesExperience onBack={handleBackToProjects} />
+        <DreamDeliveryRoutesExperience key="dream-delivery-routes" onBack={handleBackToProjects} />
       )}
 
       {activeProject === 'bedtime-storybook' && (
-        <BedtimeStorybookExperience onBack={handleBackToProjects} />
+        <BedtimeStorybookExperience key="bedtime-storybook" onBack={handleBackToProjects} />
       )}
 
       {/* When no project is active, display the original approved 2x2 projects gallery */}

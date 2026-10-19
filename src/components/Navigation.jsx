@@ -136,6 +136,16 @@ export default function Navigation() {
           >
             <span>🎮</span> {isChaosMode ? 'Calm' : 'Chaos'}
           </button>
+
+          <button
+            type="button"
+            className="nav-tool-btn nav-tool-star"
+            onClick={openMiniGame}
+            title="Catch the Falling Stars Mini-Game ⭐"
+            aria-label="Play Catch the Falling Stars Mini-Game"
+          >
+            ⭐
+          </button>
         </div>
       </nav>
     </header>

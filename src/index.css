@@ -78,27 +78,27 @@
    Preserves layout, typography, proportions, and dimensions 100%
    ========================================================================== */
 .theme-night {
-  --color-sky-light: #16264d;
-  --color-sky-soft: #233b70;
-  --color-sky: #3b5fa8;
-  --color-sky-deep: #20376d;
-  --color-sky-border: #4d75c4;
+  --color-sky-light: #1e2e56;
+  --color-sky-soft: #283d72;
+  --color-sky: #3e5ea5;
+  --color-sky-deep: #25396b;
+  --color-sky-border: #5a85d4;
 
-  --color-window-bg: rgba(20, 34, 68, 0.94);
-  --color-cream-pure: #1c2e5a;
-  --color-cream: #18284e;
-  --color-cream-soft: #17264b;
-  --color-cream-parchment: #223768;
+  --color-window-bg: rgba(26, 40, 76, 0.94);
+  --color-cream-pure: #233664;
+  --color-cream: #1e2f58;
+  --color-cream-soft: #1d2d53;
+  --color-cream-parchment: #273b6f;
 
-  --color-navy-dark: #f0f6ff;
-  --color-navy: #d8e8ff;
-  --color-navy-muted: #a6c5f7;
-  --color-navy-border: #5e89dc;
-  --color-navy-light: #b4d2ff;
+  --color-navy-dark: #ffffff;
+  --color-navy: #e0ecff;
+  --color-navy-muted: #b0ccf8;
+  --color-navy-border: #6490e6;
+  --color-navy-light: #c2dbff;
 
-  --border-window: 2px solid #5a8fd9;
-  --shadow-window: 0 10px 30px rgba(0, 0, 0, 0.45), 0 0 20px rgba(77, 114, 188, 0.25);
-  --shadow-nav: 0 8px 24px rgba(0, 0, 0, 0.5);
+  --border-window: 2px solid #5d8fda;
+  --shadow-window: 0 10px 30px rgba(10, 18, 38, 0.55), 0 0 20px rgba(90, 133, 212, 0.22);
+  --shadow-nav: 0 8px 24px rgba(10, 18, 38, 0.45);
 }
 
 /* ==========================================================================
@@ -232,20 +232,20 @@ body::after {
   inset: 0;
   z-index: -1;
   pointer-events: none;
-  background: radial-gradient(circle at 50% 25%, rgba(18, 32, 65, 0.4) 0%, rgba(9, 15, 33, 0.88) 100%),
-              linear-gradient(180deg, rgba(9, 15, 33, 0.15) 0%, rgba(9, 15, 33, 0.82) 100%);
+  background: radial-gradient(circle at 50% 20%, rgba(130, 165, 235, 0.16) 0%, rgba(28, 42, 80, 0.45) 70%, rgba(20, 30, 60, 0.72) 100%),
+              linear-gradient(180deg, rgba(32, 48, 92, 0.25) 0%, rgba(22, 34, 68, 0.55) 100%);
   opacity: 0;
   transition: opacity 0.45s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Night Mode: Visibly and Genuinely Transforms Background into Deep Midnight */
+/* Night Mode: Cozy Soft Periwinkle & Muted Midnight Blue (Not Pitch Black) */
 body.theme-night {
-  background-color: #0b1224;
+  background-color: #1a2748;
   color: var(--color-navy);
 }
 
 body.theme-night::before {
-  filter: brightness(0.42) saturate(1.3) hue-rotate(218deg) contrast(1.15);
+  filter: brightness(0.70) saturate(1.15) hue-rotate(205deg) contrast(1.05);
 }
 
 body.theme-night::after {

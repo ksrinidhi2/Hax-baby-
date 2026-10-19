@@ -1,23 +1,24 @@
 /* ==========================================================================
-   Home Section Hero Styles - Exact 100svh Match to Target Reference (Image 2)
+   Home Section Hero Styles - Refined 2-Column Responsive Layout
+   Real HTML Elements, Soft Dream Sky Atmosphere, Independent Elements
    ========================================================================== */
 
 .hero-section {
   width: 100%;
-  height: 100svh;
-  max-height: 100svh;
+  min-height: calc(100vh - var(--nav-height, 70px));
   position: relative;
   overflow: hidden;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: center;
-  background-color: #92c4f8;
+  /* Soft pastel sky-blue gradient scoped exclusively to Home */
+  background: linear-gradient(180deg, #8dc3fb 0%, #b4dbfd 45%, #daf0fe 82%, rgba(218, 240, 254, 0.6) 100%);
   scroll-margin-top: 0;
   z-index: 1;
-  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 calc(100% - 48px), rgba(0, 0, 0, 0.6) calc(100% - 20px), transparent 100%);
-  mask-image: linear-gradient(to bottom, #000 0%, #000 calc(100% - 48px), rgba(0, 0, 0, 0.6) calc(100% - 20px), transparent 100%);
+  padding: calc(var(--nav-height, 70px) + 2rem) 1.5rem 3.5rem 1.5rem;
+  transition: background 0.4s ease;
 }
 
 /* Screen reader only utility */
@@ -33,31 +34,109 @@
   border: 0;
 }
 
+/* Decorative Floating Sky Atmosphere */
+.hero-atmosphere {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.hero-star {
+  position: absolute;
+  color: #ffd866;
+  opacity: 0.85;
+  filter: drop-shadow(0 0 6px rgba(255, 216, 102, 0.7));
+  user-select: none;
+  animation: hero-star-twinkle 3s ease-in-out infinite alternate;
+}
+
+.star-1 {
+  top: 14%;
+  left: 8%;
+  font-size: 1.6rem;
+  animation-delay: 0.2s;
+}
+
+.star-2 {
+  top: 22%;
+  left: 45%;
+  font-size: 1.2rem;
+  animation-delay: 1.1s;
+}
+
+.star-3 {
+  top: 10%;
+  right: 12%;
+  font-size: 1.5rem;
+  animation-delay: 0.7s;
+}
+
+.star-4 {
+  bottom: 25%;
+  left: 18%;
+  font-size: 1.1rem;
+  animation-delay: 1.6s;
+}
+
+.hero-cloud-puff {
+  position: absolute;
+  font-size: 3rem;
+  opacity: 0.28;
+  filter: blur(1px);
+  user-select: none;
+  animation: hero-cloud-drift 18s ease-in-out infinite alternate;
+}
+
+.puff-1 {
+  top: 8%;
+  right: 28%;
+}
+
+.puff-2 {
+  bottom: 12%;
+  left: 4%;
+  font-size: 3.5rem;
+  animation-delay: 4s;
+}
+
+@keyframes hero-star-twinkle {
+  0% { transform: scale(0.85) rotate(0deg); opacity: 0.5; }
+  100% { transform: scale(1.15) rotate(15deg); opacity: 1; }
+}
+
+@keyframes hero-cloud-drift {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(25px); }
+}
+
 /* Returning Visitor Greeting Pill - Floating gently under navbar */
 .hero-visitor-pill {
   position: absolute;
-  top: 96px;
+  top: calc(var(--nav-height, 70px) + 12px);
   z-index: 100;
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  background: rgba(255, 255, 255, 0.94);
-  border: 1.5px solid var(--color-sky-border);
-  border-radius: var(--radius-pill);
-  box-shadow: 0 4px 16px rgba(27, 46, 86, 0.16);
-  padding: 0.35rem 0.85rem;
+  gap: 0.6rem;
+  background: rgba(255, 255, 255, 0.95);
+  border: 2px solid var(--color-sky-border, #7ea5e8);
+  border-radius: var(--radius-pill, 9999px);
+  box-shadow: 0 6px 20px rgba(27, 46, 86, 0.16);
+  padding: 0.45rem 1.1rem;
   font-family: var(--font-heading);
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   font-weight: 600;
-  color: var(--color-navy-dark);
+  color: var(--color-navy-dark, #1a2b52);
   animation: visitor-slide-down 0.4s ease-out;
   max-width: 90%;
+  backdrop-filter: blur(8px);
 }
 
 @keyframes visitor-slide-down {
   from {
     opacity: 0;
-    transform: translateY(-12px);
+    transform: translateY(-14px);
   }
   to {
     opacity: 1;
@@ -66,226 +145,312 @@
 }
 
 .visitor-pill-icon {
-  font-size: 1rem;
+  font-size: 1.1rem;
+  line-height: 1;
 }
 
 .visitor-pill-dismiss {
   background: transparent;
   border: none;
-  color: var(--color-navy-muted);
-  font-size: 0.8rem;
+  color: var(--color-navy-muted, #5b75a6);
+  font-size: 0.85rem;
   cursor: pointer;
-  padding: 0 0.2rem;
+  padding: 0 0.25rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: color 0.15s ease;
+  transition: color 0.15s ease, transform 0.15s ease;
 }
 
 .visitor-pill-dismiss:hover {
-  color: var(--color-pink-deep);
+  color: var(--color-pink-deep, #e6527b);
+  transform: scale(1.2);
 }
 
-/* Hero Stage - Container holding the pristine 1774x783 scene */
-.hero-stage-wrapper {
+/* Main Hero 2-Column Container */
+.hero-main-container {
   width: 100%;
-  height: 100%;
-  max-width: 1774px;
+  max-width: 1240px;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2.5rem;
+  position: relative;
+  z-index: 2;
+  margin: auto 0;
+}
+
+/* Left Column: Real Content Elements */
+.hero-content-col {
+  flex: 1;
+  max-width: 580px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  z-index: 2;
+}
+
+/* Welcome Badge */
+.hero-welcome-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1.5px solid var(--color-sky-border, #84aef5);
+  border-radius: var(--radius-pill, 9999px);
+  padding: 0.35rem 0.95rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 3px 10px rgba(32, 60, 114, 0.08);
+  backdrop-filter: blur(6px);
+}
+
+.welcome-text {
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-navy-dark, #192b52);
+  letter-spacing: 0.02em;
+}
+
+.welcome-moon-icon {
+  font-size: 1rem;
+}
+
+.welcome-star-icon {
+  font-size: 0.9rem;
+}
+
+/* Main Heading */
+.hero-main-title {
+  font-family: var(--font-heading);
+  font-size: clamp(2.4rem, 4.5vw, 3.8rem);
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--color-navy-dark, #192b52);
+  margin-bottom: 1.15rem;
+  letter-spacing: -0.015em;
+  text-shadow: 0 2px 14px rgba(255, 255, 255, 0.85);
+}
+
+.hero-title-star {
+  color: #ffc837;
+  display: inline-block;
+  font-size: 0.85em;
+  filter: drop-shadow(0 2px 8px rgba(255, 200, 55, 0.6));
+  animation: star-pulse 2.2s infinite ease-in-out alternate;
+}
+
+.hero-title-sparkle {
+  color: #ff88a8;
+  display: inline-block;
+  font-size: 0.8em;
+  filter: drop-shadow(0 2px 8px rgba(255, 136, 168, 0.6));
+}
+
+@keyframes star-pulse {
+  from { transform: scale(1) rotate(0deg); }
+  to { transform: scale(1.12) rotate(8deg); }
+}
+
+/* Tagline Subtitle */
+.hero-tagline {
+  font-family: var(--font-body);
+  font-size: clamp(1.1rem, 2vw, 1.45rem);
+  font-weight: 500;
+  color: #264275;
+  line-height: 1.5;
+  margin-bottom: 2.2rem;
+  max-width: 500px;
+}
+
+.tagline-star {
+  color: #ff9800;
+  font-size: 1.1em;
+}
+
+/* Action Buttons Container */
+.hero-cta-buttons {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+/* Base button reset & common dream button styling */
+.hero-cta-buttons .btn {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 600;
+  padding: 0.85rem 1.85rem;
+  border-radius: var(--radius-pill, 9999px);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  cursor: pointer;
+  transition: all 0.18s cubic-bezier(0.2, 0.8, 0.4, 1);
+  text-decoration: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+}
+
+.hero-cta-buttons .btn:focus-visible {
+  outline: 3px solid #ffc837;
+  outline-offset: 3px;
+}
+
+/* Pink "Explore the Workshop →" Button */
+.hero-btn-workshop {
+  background: var(--color-pink-primary, #ff7e9e);
+  color: #ffffff !important;
+  border: 2px solid var(--color-pink-deep, #e6527b);
+  box-shadow: 0 5px 0 #db3e6c, 0 8px 24px rgba(235, 75, 120, 0.38);
+}
+
+.hero-btn-workshop:hover {
+  transform: translateY(-3px);
+  background: #ff6f92;
+  box-shadow: 0 8px 0 #db3e6c, 0 12px 28px rgba(235, 75, 120, 0.48);
+}
+
+.hero-btn-workshop:active {
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 #db3e6c, 0 4px 12px rgba(235, 75, 120, 0.3);
+}
+
+.btn-star-emoji {
+  font-size: 1.15rem;
+}
+
+/* White "Read Pip's Story" Button */
+.hero-btn-story {
+  background: #ffffff;
+  color: var(--color-navy-dark, #192b52) !important;
+  border: 2px solid #b3cdf2;
+  box-shadow: 0 5px 0 #9ec1ec, 0 8px 20px rgba(27, 46, 86, 0.12);
+}
+
+.hero-btn-story:hover {
+  transform: translateY(-3px);
+  background: #fdfdff;
+  border-color: #9ec1ec;
+  box-shadow: 0 8px 0 #9ec1ec, 0 12px 24px rgba(27, 46, 86, 0.18);
+}
+
+.hero-btn-story:active {
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 #9ec1ec, 0 4px 10px rgba(27, 46, 86, 0.1);
+}
+
+.btn-book-emoji {
+  font-size: 1.15rem;
+}
+
+/* Right Column: Pip & Observatory Castle Artwork (Separate Illustration Element) */
+.hero-artwork-col {
+  flex: 1;
+  max-width: 620px;
+  display: flex;
+  align-items: center;
   justify-content: center;
   position: relative;
+  z-index: 2;
 }
 
-.hero-stage {
+.hero-illustration-wrapper {
   position: relative;
   width: 100%;
-  height: 100%;
-  max-height: calc(100svh - 10px);
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-}
-
-/* Subtle Gaze Tilt Box for Pip & Scene */
-.hero-artwork-tilt-box {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
+  max-width: 580px;
   transform-style: preserve-3d;
-  transition: transform 0.15s ease-out;
+  transition: transform 0.18s ease-out;
   will-change: transform;
+  filter: drop-shadow(0 14px 32px rgba(27, 52, 98, 0.18));
 }
 
-.hero-artwork-tilt-box.bow-wiggle {
-  animation: bow-wiggle-anim 0.6s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+.hero-illustration-wrapper.bow-wiggle {
+  animation: hero-bow-wiggle-anim 0.6s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
 }
 
-@keyframes bow-wiggle-anim {
+@keyframes hero-bow-wiggle-anim {
   10%, 90% { transform: translate3d(-1px, -2px, 0) rotate(-1.5deg); }
   20%, 80% { transform: translate3d(2px, 1px, 0) rotate(2deg); }
   30%, 50%, 70% { transform: translate3d(-2px, -3px, 0) rotate(-2deg); }
   40%, 60% { transform: translate3d(2px, 1px, 0) rotate(2.5deg); }
 }
 
-.hero-scene-artwork {
+.hero-illustration-img {
   width: 100%;
-  height: 100%;
-  max-height: calc(100svh - 10px);
-  object-fit: contain;
-  object-position: center bottom;
+  height: auto;
   display: block;
   user-select: none;
-  pointer-events: none;
   image-rendering: pixelated;
   image-rendering: -webkit-optimize-contrast;
   image-rendering: crisp-edges;
 }
 
-/* Interactive Overlay Hotspots directly on the artwork buttons */
-.hero-interactive-layer {
+/* Clickable Pip Nightcap Bow Target */
+.hero-bow-target {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-}
-
-/* The inner frame matching the actual rendered aspect ratio box of the image */
-.hero-hotspot-frame {
-  position: absolute;
-  pointer-events: none;
-}
-
-.hero-hotspot {
-  position: absolute;
-  pointer-events: auto;
+  top: 42%;
+  left: 36%;
+  width: 9%;
+  height: 9%;
+  border-radius: 50%;
   cursor: pointer;
   background: transparent;
   border: none;
   outline: none;
-  padding: 0;
-  margin: 0;
-  transition: transform 0.12s ease, filter 0.15s ease;
-  user-select: none;
+  z-index: 20;
+  transition: transform 0.15s ease, filter 0.15s ease;
   -webkit-tap-highlight-color: transparent;
 }
 
-.hero-hotspot:focus-visible {
-  outline: 3px solid #ffc837;
-  outline-offset: 2px;
+.hero-bow-target:hover {
+  transform: scale(1.2);
+  filter: drop-shadow(0 0 10px rgba(255, 126, 158, 0.9));
 }
 
-/* Pink "Explore the Workshop" Hotspot */
-.hero-hotspot-pink {
-  left: 10.60%;
-  top: 58.62%;
-  width: 20.41%;
-  height: 8.30%;
-  border-radius: 16px;
+.hero-bow-target.is-tickled {
+  transform: scale(0.9);
 }
 
-.hero-hotspot-pink:hover {
-  transform: translateY(-2px);
-  filter: drop-shadow(0 4px 12px rgba(255, 126, 158, 0.65));
-}
-
-.hero-hotspot-pink:active {
-  transform: translateY(2px);
-}
-
-/* White "Read Pip's Story" Hotspot */
-.hero-hotspot-white {
-  left: 32.86%;
-  top: 58.62%;
-  width: 20.41%;
-  height: 8.30%;
-  border-radius: 16px;
-}
-
-.hero-hotspot-white:hover {
-  transform: translateY(-2px);
-  filter: drop-shadow(0 4px 12px rgba(255, 255, 255, 0.8));
-}
-
-.hero-hotspot-white:active {
-  transform: translateY(2px);
-}
-
-/* Bottom "Scroll down to begin our journey" Hotspot */
-.hero-hotspot-scroll {
-  left: 39.06%;
-  top: 83.52%;
-  width: 21.88%;
-  height: 13.5%;
-  border-radius: 20px;
-}
-
-.hero-hotspot-scroll:hover {
-  transform: translateY(3px);
-  filter: drop-shadow(0 4px 8px rgba(32, 60, 114, 0.3));
-}
-
-/* Pip's Ticklish Bow Hotspot */
-.hero-hotspot-bow {
-  left: 73.0%;
-  top: 35.5%;
-  width: 5.5%;
-  height: 5.8%;
-  border-radius: 50%;
-  cursor: pointer;
-  z-index: 10;
-}
-
-.hero-hotspot-bow:hover {
-  transform: scale(1.15);
-  filter: drop-shadow(0 0 8px rgba(255, 126, 158, 0.9));
-}
-
-.hero-hotspot-bow:active,
-.hero-hotspot-bow.is-tickled {
-  transform: scale(0.92);
-}
-
-/* Floating Pip Tickle Bubble */
-.pip-tickle-bubble {
+/* Pip Tickle Bubble on Hero */
+.pip-hero-tickle-bubble {
   position: absolute;
-  left: 65%;
-  top: 25%;
+  top: 26%;
+  left: 22%;
   background: #ffffff;
-  border: 2px solid var(--color-pink-primary);
-  border-radius: var(--radius-pill);
-  box-shadow: 0 6px 20px rgba(219, 75, 113, 0.3);
-  padding: 0.45rem 0.95rem;
+  border: 2px solid var(--color-pink-primary, #ff7e9e);
+  border-radius: var(--radius-pill, 9999px);
+  box-shadow: 0 6px 20px rgba(219, 75, 113, 0.28);
+  padding: 0.5rem 1rem;
   font-family: var(--font-heading);
-  font-size: 0.9rem;
+  font-size: 0.92rem;
   font-weight: 700;
-  color: var(--color-pink-deep);
+  color: var(--color-pink-deep, #e6527b);
   pointer-events: none;
-  z-index: 50;
+  z-index: 30;
   white-space: nowrap;
-  animation: tickle-pop 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  animation: hero-tickle-pop 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.pip-tickle-bubble::after {
+.pip-hero-tickle-bubble::after {
   content: '';
   position: absolute;
-  bottom: -7px;
-  left: 30%;
+  bottom: -8px;
+  left: 32%;
   width: 0;
   height: 0;
-  border-left: 7px solid transparent;
-  border-right: 7px solid transparent;
-  border-top: 7px solid var(--color-pink-primary);
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 8px solid var(--color-pink-primary, #ff7e9e);
 }
 
-@keyframes tickle-pop {
+@keyframes hero-tickle-pop {
   0% {
     opacity: 0;
-    transform: scale(0.6) translateY(10px);
+    transform: scale(0.6) translateY(12px);
   }
   100% {
     opacity: 1;
@@ -293,18 +458,194 @@
   }
 }
 
-/* Night Mode Hero Adaptations */
-body.theme-night .hero-section {
-  background-color: transparent !important;
+/* Bottom Real HTML Scroll Indicator */
+.hero-scroll-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: rgba(255, 255, 255, 0.88);
+  border: 1.5px solid var(--color-sky-border, #92bbf5);
+  border-radius: var(--radius-pill, 9999px);
+  padding: 0.55rem 1.35rem;
+  margin-top: 2rem;
+  box-shadow: 0 4px 14px rgba(27, 46, 86, 0.1);
+  cursor: pointer;
+  user-select: none;
+  z-index: 2;
+  transition: all 0.2s ease;
+  animation: hero-scroll-bounce 2.8s ease-in-out infinite;
+  backdrop-filter: blur(6px);
 }
 
-body.theme-night .hero-scene-artwork {
-  filter: brightness(0.82) contrast(1.08) hue-rotate(12deg);
+.hero-scroll-indicator:hover {
+  transform: translateY(-3px);
+  background: #ffffff;
+  border-color: #6a9ce8;
+  box-shadow: 0 6px 18px rgba(27, 46, 86, 0.16);
+}
+
+.hero-scroll-indicator:focus-visible {
+  outline: 3px solid #ffc837;
+  outline-offset: 2px;
+}
+
+@keyframes hero-scroll-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-7px); }
+}
+
+.scroll-star {
+  font-size: 1.1rem;
+  color: #ffc837;
+}
+
+.scroll-text-group {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.scroll-label {
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-navy-dark, #192b52);
+}
+
+.scroll-mouse-symbol {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mouse-arrow {
+  font-size: 1.15rem;
+  color: var(--color-pink-deep, #e6527b);
+  font-weight: 800;
+}
+
+/* ==========================================================================
+   Night Mode Adaptations for Home Section
+   Soft Periwinkle / Lavender Blue Midnight Atmosphere (NOT Pitch Black)
+   Preserves character artwork brightness while shifting ambient light
+   ========================================================================== */
+
+body.theme-night .hero-section {
+  background: linear-gradient(180deg, #1a284c 0%, #233664 45%, #2d4278 82%, rgba(45, 66, 120, 0.5) 100%) !important;
 }
 
 body.theme-night .hero-visitor-pill {
-  background: rgba(20, 34, 68, 0.94);
-  border-color: #5a85d4;
+  background: rgba(28, 44, 82, 0.94);
+  border-color: #5c84d4;
   color: #f0f6ff;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+body.theme-night .hero-welcome-badge {
+  background: rgba(30, 48, 88, 0.88);
+  border-color: #567ecb;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+}
+
+body.theme-night .welcome-text {
+  color: #eaf2ff;
+}
+
+body.theme-night .hero-main-title {
+  color: #ffffff !important;
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.5), 0 0 20px rgba(138, 178, 255, 0.35);
+}
+
+body.theme-night .hero-tagline {
+  color: #d2e4ff;
+}
+
+body.theme-night .hero-btn-story {
+  background: #233766;
+  color: #ffffff !important;
+  border-color: #5d87d8;
+  box-shadow: 0 5px 0 #162447, 0 8px 20px rgba(0, 0, 0, 0.35);
+}
+
+body.theme-night .hero-btn-story:hover {
+  background: #2a4178;
+  border-color: #78a2f4;
+  box-shadow: 0 8px 0 #162447, 0 12px 24px rgba(0, 0, 0, 0.45);
+}
+
+body.theme-night .hero-illustration-wrapper {
+  /* Pip remains vibrant and bright under moonlight, never dark or muddy */
+  filter: drop-shadow(0 16px 36px rgba(0, 0, 0, 0.55)) drop-shadow(0 0 18px rgba(118, 160, 245, 0.25));
+}
+
+body.theme-night .hero-illustration-img {
+  /* Keep Pip character crisp and colorful */
+  filter: brightness(0.98) contrast(1.02);
+}
+
+body.theme-night .hero-scroll-indicator {
+  background: rgba(28, 44, 82, 0.9);
+  border-color: #5880cc;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+body.theme-night .scroll-label {
+  color: #e8f2ff;
+}
+
+/* Responsive adjustments */
+@media (max-width: 960px) {
+  .hero-main-container {
+    flex-direction: column-reverse;
+    text-align: center;
+    gap: 2rem;
+    padding-top: 1rem;
+  }
+
+  .hero-content-col {
+    align-items: center;
+    text-align: center;
+    max-width: 100%;
+  }
+
+  .hero-welcome-badge {
+    margin-bottom: 0.75rem;
+  }
+
+  .hero-tagline {
+    text-align: center;
+  }
+
+  .hero-cta-buttons {
+    justify-content: center;
+  }
+
+  .hero-artwork-col {
+    max-width: 440px;
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-section {
+    padding: calc(var(--nav-height, 70px) + 1.25rem) 1rem 2.5rem 1rem;
+  }
+
+  .hero-cta-buttons {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .hero-cta-buttons .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .hero-scroll-indicator {
+    padding: 0.45rem 1rem;
+  }
+
+  .scroll-label {
+    font-size: 0.85rem;
+  }
 }

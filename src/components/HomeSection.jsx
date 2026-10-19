@@ -174,6 +174,14 @@ export default function HomeSection() {
                 : `perspective(1000px) rotateY(${tilt.x}deg) rotateX(${tilt.y}deg) translate3d(${tilt.shiftX}px, ${tilt.shiftY}px, 0)`
             }}
           >
+            {/* Separate Speech Bubble Sticker */}
+            <div className="pip-speech-bubble-sticker" role="note" aria-label="Pip says: Hi! I'm Pip! Let's explore my world!">
+              <p className="bubble-text-title">Hi! I'm Pip!</p>
+              <p className="bubble-text-sub">
+                Let's explore my world! <span className="bubble-star" aria-hidden="true">⭐</span>
+              </p>
+            </div>
+
             <img
               src={pipHeroObservatory}
               alt="Pip on a cloud holding a shining star beside the Midnight Nursery Observatory"

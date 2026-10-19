@@ -365,7 +365,80 @@
   transform-style: preserve-3d;
   transition: transform 0.18s ease-out;
   will-change: transform;
-  filter: drop-shadow(0 14px 32px rgba(27, 52, 98, 0.18));
+}
+
+/* Separate Interactive Speech Bubble Sticker */
+.pip-speech-bubble-sticker {
+  position: absolute;
+  top: 13%;
+  left: 22%;
+  background: #ffffff;
+  border: 3px solid #1c3d7a;
+  border-radius: 18px;
+  padding: 0.6rem 1.15rem;
+  box-shadow: 0 4px 0 #122854, 0 6px 16px rgba(28, 61, 122, 0.18);
+  z-index: 25;
+  user-select: none;
+  pointer-events: auto;
+  text-align: center;
+  animation: speech-sticker-bob 3.2s ease-in-out infinite alternate;
+}
+
+.pip-speech-bubble-sticker::after {
+  content: '';
+  position: absolute;
+  bottom: -11px;
+  left: 32px;
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 11px solid #1c3d7a;
+}
+
+.pip-speech-bubble-sticker::before {
+  content: '';
+  position: absolute;
+  bottom: -7px;
+  left: 34px;
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 8px solid #ffffff;
+  z-index: 1;
+}
+
+@keyframes speech-sticker-bob {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-4px); }
+}
+
+.bubble-text-title {
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #1c3d7a;
+  line-height: 1.25;
+  margin: 0;
+}
+
+.bubble-text-sub {
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #1c3d7a;
+  line-height: 1.25;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+}
+
+.bubble-star {
+  color: #ffc837;
+  font-size: 1rem;
 }
 
 .hero-illustration-wrapper.bow-wiggle {
@@ -574,8 +647,26 @@ body.theme-night .hero-btn-story:hover {
 }
 
 body.theme-night .hero-illustration-wrapper {
-  /* Pip remains vibrant and bright under moonlight, never dark or muddy */
-  filter: drop-shadow(0 16px 36px rgba(0, 0, 0, 0.55)) drop-shadow(0 0 18px rgba(118, 160, 245, 0.25));
+  filter: none;
+}
+
+body.theme-night .pip-speech-bubble-sticker {
+  background: #1c2e5a;
+  border-color: #5d8fda;
+  box-shadow: 0 4px 0 #0d172e, 0 6px 20px rgba(0, 0, 0, 0.45);
+}
+
+body.theme-night .pip-speech-bubble-sticker::after {
+  border-top-color: #5d8fda;
+}
+
+body.theme-night .pip-speech-bubble-sticker::before {
+  border-top-color: #1c2e5a;
+}
+
+body.theme-night .bubble-text-title,
+body.theme-night .bubble-text-sub {
+  color: #ffffff;
 }
 
 body.theme-night .hero-illustration-img {

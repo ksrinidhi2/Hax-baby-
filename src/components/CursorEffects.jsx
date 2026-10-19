@@ -2,19 +2,80 @@ import React, { useEffect, useState, useRef } from 'react';
 import './CursorEffects.css';
 import { useSite } from '../context/SiteContext';
 
-// Balanced mix of pastel pink, lavender, sky blue, mint green, soft gold, and occasional peach
+// 6 Exact Pastel Colors Requested by User
 const PASTEL_PALETTE = [
-  { color: '#ff9ec6', glow: 'rgba(255, 158, 198, 0.95)' }, // Pastel Pink
-  { color: '#cda6ff', glow: 'rgba(205, 166, 255, 0.95)' }, // Lavender
-  { color: '#7cd4ff', glow: 'rgba(124, 212, 255, 0.95)' }, // Sky Blue
-  { color: '#88ecc4', glow: 'rgba(136, 236, 196, 0.95)' }, // Mint Green
-  { color: '#ffd66b', glow: 'rgba(255, 214, 107, 0.95)' }, // Soft Gold
-  { color: '#ffbe99', glow: 'rgba(255, 190, 153, 0.95)' }, // Occasional Peach
-  { color: '#ffa8d8', glow: 'rgba(255, 168, 216, 0.95)' }, // Baby Rose Pink
-  { color: '#a8d8ff', glow: 'rgba(168, 216, 255, 0.95)' }, // Powder Blue
-  { color: '#dfb8ff', glow: 'rgba(223, 184, 255, 0.95)' }, // Soft Lilac
-  { color: '#ffe27d', glow: 'rgba(255, 226, 125, 0.95)' }  // Warm Butter Gold
+  { color: '#FF9EC6', glow: 'rgba(255, 158, 198, 0.85)' }, // Pastel pink
+  { color: '#CDA6FF', glow: 'rgba(205, 166, 255, 0.85)' }, // Lavender
+  { color: '#8ED8FF', glow: 'rgba(142, 216, 255, 0.85)' }, // Baby blue
+  { color: '#98E8C5', glow: 'rgba(152, 232, 197, 0.85)' }, // Mint green
+  { color: '#FFC4A3', glow: 'rgba(255, 196, 163, 0.85)' }, // Soft peach
+  { color: '#FFE58F', glow: 'rgba(255, 229, 143, 0.85)' }  // Butter yellow
 ];
+
+// Pure SVG Vector Star Shapes: ✦ (diamond), ✧ (hollow), ★ (five-pointed)
+// Completely immune to OS color emoji substitution
+const STAR_TYPES = ['four-point', 'hollow', 'five-point'];
+
+function StarSvg({ type, color, size, glow }) {
+  if (type === 'hollow') {
+    return (
+      <svg
+        width={size}
+        height={size}
+        viewBox="0 0 24 24"
+        style={{
+          filter: `drop-shadow(0 0 3px ${glow}) drop-shadow(0 0 6px rgba(255,255,255,0.9))`
+        }}
+        aria-hidden="true"
+      >
+        <path
+          d="M12 2 L14.8 9.2 L22 12 L14.8 14.8 L12 22 L9.2 14.8 L2 12 L9.2 9.2 Z"
+          fill="none"
+          stroke={color}
+          strokeWidth="2.5"
+          strokeLinejoin="round"
+        />
+      </svg>
+    );
+  }
+
+  if (type === 'five-point') {
+    return (
+      <svg
+        width={size}
+        height={size}
+        viewBox="0 0 24 24"
+        style={{
+          filter: `drop-shadow(0 0 3px ${glow}) drop-shadow(0 0 6px rgba(255,255,255,0.9))`
+        }}
+        aria-hidden="true"
+      >
+        <path
+          d="M12 1.5 L15.2 8.3 L22.5 9.2 L17.1 14.2 L18.6 21.5 L12 17.8 L5.4 21.5 L6.9 14.2 L1.5 9.2 L8.8 8.3 Z"
+          fill={color}
+        />
+      </svg>
+    );
+  }
+
+  // Four-pointed diamond star (✦)
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      style={{
+        filter: `drop-shadow(0 0 3px ${glow}) drop-shadow(0 0 6px rgba(255,255,255,0.9))`
+      }}
+      aria-hidden="true"
+    >
+      <path
+        d="M12 1 C12 7 7 12 1 12 C7 12 12 17 12 23 C12 17 17 12 23 12 C17 12 12 7 12 1 Z"
+        fill={color}
+      />
+    </svg>
+  );
+}
 
 export default function CursorEffects() {
   const { sparklesActive, nightlightCursor, theme } = useSite();
@@ -22,10 +83,12 @@ export default function CursorEffects() {
   const [sparkles, setSparkles] = useState([]);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
 
+  const lastSpawnPosRef = useRef({ x: -1000, y: -1000 });
   const lastSpawnTimeRef = useRef(0);
-  const sparkleIdCounterRef = useRef(0);
+  const colorIndexRef = useRef(0);
+  const starIdCounterRef = useRef(0);
 
-  // Check reduced-motion preference only
+  // Check reduced-motion preference
   useEffect(() => {
     const mql = window.matchMedia('(prefers-reduced-motion: reduce)');
     setPrefersReducedMotion(mql.matches);
@@ -36,10 +99,9 @@ export default function CursorEffects() {
     return () => mql.removeEventListener('change', handleMotionChange);
   }, []);
 
-  // Listen to pointer movement globally (works with mouse, trackpad, pen)
+  // Listen to pointer movement globally
   useEffect(() => {
     const handlePointerMove = (e) => {
-      // If event explicitly comes from pure touch contact, skip
       if (e.pointerType === 'touch') return;
 
       const x = e.clientX;
@@ -48,35 +110,41 @@ export default function CursorEffects() {
 
       if (sparklesActive && !prefersReducedMotion) {
         const now = performance.now();
-        // Throttle sparkle creation to every 38ms for buttery-smooth trail
-        if (now - lastSpawnTimeRef.current > 38) {
-          lastSpawnTimeRef.current = now;
+        const dist = Math.hypot(x - lastSpawnPosRef.current.x, y - lastSpawnPosRef.current.y);
 
-          const symbols = ['✦', '⭐', '✧', '⋆', '･', '✨'];
-          const symbol = symbols[Math.floor(Math.random() * symbols.length)];
-          const size = Math.floor(Math.random() * 8) + 12; // 12px - 20px
-          const offsetX = (Math.random() - 0.5) * 20;
-          const offsetY = (Math.random() - 0.5) * 20;
+        // Spawn smoothly on distance (>= 8px) or time (>= 24ms)
+        if (dist >= 8 || now - lastSpawnTimeRef.current >= 24) {
+          lastSpawnTimeRef.current = now;
+          lastSpawnPosRef.current = { x, y };
+
+          // Strictly cycle sequentially through all 6 pastel colors
+          const palette = PASTEL_PALETTE[colorIndexRef.current % PASTEL_PALETTE.length];
+          colorIndexRef.current++;
+
+          // Cycle or pick star shapes: ✦, ✧, ★
+          const starType = STAR_TYPES[starIdCounterRef.current % STAR_TYPES.length];
+          const size = Math.floor(Math.random() * 6) + 12; // 12px - 17px delicate size
+          const offsetX = (Math.random() - 0.5) * 16;
+          const offsetY = (Math.random() - 0.5) * 16;
           const rotation = Math.floor(Math.random() * 360);
 
-          // Sequentially cycle through the pastel rainbow for smooth gradient variation
-          const paletteIndex = sparkleIdCounterRef.current % PASTEL_PALETTE.length;
-          const pickedPalette = PASTEL_PALETTE[paletteIndex];
-
           const newSparkle = {
-            id: ++sparkleIdCounterRef.current,
+            id: ++starIdCounterRef.current,
             x: x + offsetX,
             y: y + offsetY,
-            symbol,
+            starType,
             size,
             rotation,
-            color: pickedPalette.color,
-            glow: pickedPalette.glow
+            color: palette.color,
+            glow: palette.glow,
+            bornAt: now,
+            lifetime: 680 // ms lifetime
           };
 
           setSparkles((prev) => {
-            const updated = prev.length > 28 ? prev.slice(prev.length - 27) : [...prev];
-            return [...updated, newSparkle];
+            // Keep up to 45 active particles for a luscious, abundant trail
+            const slice = prev.length >= 45 ? prev.slice(prev.length - 44) : prev;
+            return [...slice, newSparkle];
           });
         }
       }
@@ -91,16 +159,17 @@ export default function CursorEffects() {
     };
   }, [sparklesActive, prefersReducedMotion]);
 
-  // Clean up expired sparkles automatically
+  // Clean up expired sparkles smoothly on a 35ms heartbeat
   useEffect(() => {
     if (sparkles.length === 0) return;
 
-    const timer = setTimeout(() => {
-      setSparkles((prev) => prev.slice(1));
-    }, 700);
+    const interval = setInterval(() => {
+      const now = performance.now();
+      setSparkles((prev) => prev.filter((sp) => now - sp.bornAt < sp.lifetime));
+    }, 35);
 
-    return () => clearTimeout(timer);
-  }, [sparkles]);
+    return () => clearInterval(interval);
+  }, [sparkles.length]);
 
   const isNight = theme === 'night';
 
@@ -116,7 +185,7 @@ export default function CursorEffects() {
         />
       )}
 
-      {/* 2. Sparkle Cursor Trail - Pastel Pink, Lavender, Sky Blue, Mint, Gold, Peach */}
+      {/* 2. Sparkle Cursor Trail: Guaranteed Multi-Color Pastel Stars */}
       {sparklesActive &&
         sparkles.map((sp) => (
           <span
@@ -125,13 +194,15 @@ export default function CursorEffects() {
             style={{
               left: `${sp.x}px`,
               top: `${sp.y}px`,
-              fontSize: `${sp.size}px`,
-              color: sp.color,
-              textShadow: `0 0 6px ${sp.glow}, 0 0 12px rgba(255, 255, 255, 0.95)`,
               transform: `translate(-50%, -50%) rotate(${sp.rotation}deg)`
             }}
           >
-            {sp.symbol}
+            <StarSvg
+              type={sp.starType}
+              color={sp.color}
+              size={sp.size}
+              glow={sp.glow}
+            />
           </span>
         ))}
     </div>

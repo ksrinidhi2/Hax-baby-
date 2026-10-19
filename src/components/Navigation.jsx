@@ -13,6 +13,7 @@ const NAV_ITEMS = [
 
 export default function Navigation() {
   const [activeSection, setActiveSection] = useState('home');
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const {
     theme,
     toggleTheme,
@@ -23,6 +24,31 @@ export default function Navigation() {
     sparklesActive,
     openMiniGame
   } = useSite();
+
+  // Close mobile menu when clicking outside or pressing Escape
+  useEffect(() => {
+    if (!isMobileMenuOpen) return;
+
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') {
+        setIsMobileMenuOpen(false);
+      }
+    };
+
+    const handlePointerDown = (e) => {
+      const navEl = document.querySelector('.nav-container');
+      if (navEl && !navEl.contains(e.target)) {
+        setIsMobileMenuOpen(false);
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    document.addEventListener('pointerdown', handlePointerDown);
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+      document.removeEventListener('pointerdown', handlePointerDown);
+    };
+  }, [isMobileMenuOpen]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -61,11 +87,17 @@ export default function Navigation() {
       element.scrollIntoView({ behavior: 'smooth' });
       setActiveSection(sectionId);
     }
+    setIsMobileMenuOpen(false);
+  };
+
+  const handleMiniGameClick = () => {
+    openMiniGame();
+    setIsMobileMenuOpen(false);
   };
 
   return (
     <header className="nav-wrapper">
-      <nav className="nav-container" aria-label="Main Navigation">
+      <nav className={`nav-container ${isMobileMenuOpen ? 'is-menu-open' : ''}`} aria-label="Main Navigation">
         {/* Brand */}
         <a
           href="#home"
@@ -81,7 +113,7 @@ export default function Navigation() {
           </div>
         </a>
 
-        {/* Links */}
+        {/* Desktop Navigation Links */}
         <ul className="nav-links">
           {NAV_ITEMS.map((item) => {
             const isActive = activeSection === item.id;
@@ -101,7 +133,7 @@ export default function Navigation() {
           })}
         </ul>
 
-        {/* Toolbar Controls */}
+        {/* Desktop Toolbar Controls */}
         <div className="nav-actions">
           <button
             type="button"
@@ -150,6 +182,124 @@ export default function Navigation() {
             ⭐
           </button>
         </div>
+
+        {/* Mobile Hamburger Toggle Button */}
+        <button
+          type="button"
+          className={`nav-mobile-toggle ${isMobileMenuOpen ? 'is-active' : ''}`}
+          onClick={() => setIsMobileMenuOpen((prev) => !prev)}
+          aria-label={isMobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+          aria-expanded={isMobileMenuOpen}
+          aria-controls="mobile-nav-panel"
+        >
+          <span className="mobile-toggle-bars" aria-hidden="true">
+            <span className="toggle-bar bar-top" />
+            <span className="toggle-bar bar-mid" />
+            <span className="toggle-bar bar-bot" />
+          </span>
+          <span className="mobile-toggle-star" aria-hidden="true">⭐</span>
+        </button>
+
+        {/* Mobile Dropdown Menu Panel */}
+        {isMobileMenuOpen && (
+          <div
+            id="mobile-nav-panel"
+            className="mobile-nav-dropdown"
+            role="dialog"
+            aria-label="Mobile Navigation Menu"
+          >
+            <div className="mobile-dropdown-header">
+              <span className="mobile-header-icon" aria-hidden="true">☁️</span>
+              <span className="mobile-header-title">Menu (pip_nav.exe)</span>
+              <button
+                type="button"
+                className="mobile-close-btn"
+                onClick={() => setIsMobileMenuOpen(false)}
+                aria-label="Close menu"
+              >
+                ✕
+              </button>
+            </div>
+
+            {/* Navigation Section Links */}
+            <div className="mobile-links-section">
+              <span className="mobile-section-label">Sections</span>
+              <ul className="mobile-links-list">
+                {NAV_ITEMS.map((item) => {
+                  const isActive = activeSection === item.id;
+                  return (
+                    <li key={item.id} className="mobile-link-item">
+                      <a
+                        href={`#${item.id}`}
+                        className={`mobile-nav-link ${isActive ? 'active' : ''}`}
+                        onClick={(e) => handleNavClick(e, item.id)}
+                        aria-current={isActive ? 'page' : undefined}
+                      >
+                        <span className="mobile-link-icon">{item.icon}</span>
+                        <span className="mobile-link-text">{item.label}</span>
+                        {isActive && <span className="mobile-active-dot" aria-hidden="true">●</span>}
+                      </a>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+
+            {/* Controls & Mini-Game Section */}
+            <div className="mobile-controls-section">
+              <span className="mobile-section-label">Dream Controls</span>
+              <div className="mobile-controls-grid">
+                {/* Theme Mode Toggle */}
+                <button
+                  type="button"
+                  className={`mobile-control-btn theme-pill-toggle ${theme === 'night' ? 'is-night' : 'is-day'}`}
+                  onClick={toggleTheme}
+                  aria-label={`Current mode: ${theme}. Click to switch to ${theme === 'day' ? 'night' : 'day'} mode`}
+                >
+                  <span className="theme-indicator">
+                    {theme === 'day' ? '☀️' : '🌙'}
+                  </span>
+                  <span className="mobile-control-label">{theme === 'day' ? 'Day Mode' : 'Night Mode'}</span>
+                </button>
+
+                {/* Sound & Mute Toggle */}
+                <button
+                  type="button"
+                  className={`mobile-control-btn nav-tool-btn nav-tool-sound ${isMuted ? 'is-muted' : 'is-sound-on'}`}
+                  onClick={toggleMute}
+                  aria-label={isMuted ? 'Sound Muted. Click to turn sound on' : 'Sound ON. Click to mute sound'}
+                  aria-pressed={!isMuted}
+                >
+                  <span className="sound-btn-icon" aria-hidden="true">{isMuted ? '🔇' : '🔊'}</span>
+                  <span className="mobile-control-label">{isMuted ? 'Muted' : 'Sound ON'}</span>
+                </button>
+
+                {/* Chaos Mode Toggle */}
+                <button
+                  type="button"
+                  className={`mobile-control-btn nav-tool-btn nav-tool-chaos ${isChaosMode ? 'is-active' : ''}`}
+                  onClick={toggleChaosMode}
+                  aria-label={`Chaos Mode is currently ${isChaosMode ? 'ON' : 'OFF'}. Click to toggle.`}
+                  aria-pressed={isChaosMode}
+                >
+                  <span className="chaos-btn-icon" aria-hidden="true">{isChaosMode ? '✨' : '🎮'}</span>
+                  <span className="mobile-control-label">{isChaosMode ? 'Chaos: ON' : 'Chaos: OFF'}</span>
+                </button>
+
+                {/* Star Catch Mini-Game Button */}
+                <button
+                  type="button"
+                  className="mobile-control-btn nav-tool-btn nav-tool-star mobile-game-btn"
+                  onClick={handleMiniGameClick}
+                  aria-label="Play Catch the Falling Stars Mini-Game"
+                >
+                  <span className="mobile-star-icon" aria-hidden="true">⭐</span>
+                  <span className="mobile-control-label">Star Game</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
       </nav>
     </header>
   );
